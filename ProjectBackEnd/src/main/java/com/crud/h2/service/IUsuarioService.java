@@ -13,13 +13,13 @@ public interface IUsuarioService {
 	
 	public Usuario guardarUsuario(Usuario usuario);
 	
-	public Usuario usuarioXID(Long id);
+	public Usuario usuarioXID(int id);
 	
 	public List<Usuario> listarUsuarioNombre(String nombre);
 	
 	public Usuario actualizarUsuario(Usuario usuario); 
 	
-	public void eliminarUsuario(Long id);
+	public void eliminarUsuario(int id);
 	
 	
 }

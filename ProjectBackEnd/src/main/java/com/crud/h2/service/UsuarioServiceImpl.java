@@ -27,7 +27,7 @@ public class UsuarioServiceImpl implements IUsuarioService{
 			return iUsuarioDAO.save(usuario);
 		}
 		@Override
-		public Usuario usuarioXID(Long id) {
+		public Usuario usuarioXID(int id) {
 			
 			return iUsuarioDAO.findById(id).get();
 		}
@@ -37,7 +37,7 @@ public class UsuarioServiceImpl implements IUsuarioService{
 			return iUsuarioDAO.save(usuario);
 		}
 		@Override
-		public void eliminarUsuario(Long id) {
+		public void eliminarUsuario(int id) {
 			
 			iUsuarioDAO.deleteById(id);
 			

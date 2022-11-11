@@ -1,6 +1,8 @@
 package com.crud.h2.dto;
 
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,23 +11,28 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="usuario")
+@Table(name="usuarios")
 public class Usuario {
-	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private int id_usuario;
 	@Column(name = "nombre")
 	private String nombre;
-	@Column(name = "trabajo")
-	private String trabajo;
-	@Column(name="salario")
-	private double salario;
+	@Column(name = "apellidos")
+	private String apellidos;
+	@Column(name = "fecha_nacimiento")
+	private Date fecha_nacimiento;
+	@Column(name = "correo")
+	private String correo;
+	@Column(name = "ciudad")
+	private String ciudad;
+	@Column(name = "fotoPerfil")
+	private String fotoPerfil;
 	
-	private enum trabajos{
-		Programador,Desarrollador,Tester,Trabajador
-	}
+
+	
+
 	
 	public Usuario() {
 		
@@ -33,59 +40,37 @@ public class Usuario {
 	/**
 	 * @param id
 	 * @param nombre
-	 * @param trabajo
-	 * @param salario
+	 * @param apellidos
+	 * @param fecha
+	 * @param correo
+	 * @param ciudad
+	 * @param foto_perfil
 	 */
-	public Usuario(Long id, String nombre, String trabajo) {
+	public Usuario(int id, String nombre, String apellidos, Date fecha, String correo, String ciudad, String foto_perfil) {
 		//super();
-		this.id = id;
+		this.id_usuario = id;
 		this.nombre = nombre;
-		this.trabajo=compruebaTrabajo(trabajo);
-		this.salario=compruebaSalario(this.trabajo);
+		this.fecha_nacimiento=fecha;
+		this.correo=correo;
+		this.ciudad=ciudad;
+		this.fotoPerfil=foto_perfil;
 	}
-	private double compruebaSalario(String trabajo2) {
-		// método que pasa un trabajo y devuelve un salario
-		double aux_salario;
-		switch(trabajo2) {
-			case "Programador":
-				aux_salario=2000;
-				break;
-			case "Desarrollador":
-				aux_salario=1800.50;
-				break;
-			case "Tester":
-				aux_salario=1600;
-				break;
-			default:
-				aux_salario=1200;
-				break;
-		}
-		
-		return aux_salario;
-	}
-	private String compruebaTrabajo(String trabajo2) {
-		// metodo que comprueba si el trabajo se incluye en el enum si no devuelve coomo trabajador
-		for (trabajos t : trabajos.values()) { 
-			if (t.name().equals(trabajo2)) return trabajo2;
-			}
-
-		
-		return (""+trabajos.Trabajador);
-	}
+	
+	
 	//Getters y Setters
 	
 	/**
-	* @return id
+	* @return id_usuario
 	*/
-	public Long getId() {
-		return this.id;
+	public int getId() {
+		return this.id_usuario;
 	}
 
 	/**
 	* @param id
 	*/
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(int id) {
+		this.id_usuario = id;
 	}
 
 	/**
@@ -103,38 +88,83 @@ public class Usuario {
 	}
 
 	/**
-	* @return trabajo
+	* @return apellidos
 	*/
-	public String getTrabajo() {
-		return this.trabajo;
+	public String getApellidos() {
+		return this.apellidos;
 	}
 
 	/**
-	* @param trabajo
+	* @param apellidos
 	*/
-	public void setTrabajo(String trabajo) {
-		this.trabajo = compruebaTrabajo(trabajo);
-		this.salario=compruebaSalario(this.trabajo);
+	public void setApellido(String apellidos) {
+		this.apellidos = apellidos;
+	}
+	
+	
+	/**
+	* @return fecha_nacimiento
+	*/
+	
+	public Date getFechaNacimiento() {
+		return this.fecha_nacimiento;
 	}
 
 	/**
-	* @return salario
+	* @param fecha
 	*/
-	public Double getSalario() {
-		return this.salario;
+	public void setFechaNacimiento(Date fecha) {
+		this.fecha_nacimiento = fecha;
+	}
+	
+	/**
+	* @return correo
+	*/
+	public String getCorreo() {
+		return this.correo;
 	}
 
 	/**
-	* @param salario
+	* @param correo
 	*/
-	public void setSalario(Double salario) {
-		this.salario = salario;
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
-		
+	
+	/**
+	* @return ciudad
+	*/
+	public String getCiudad() {
+		return this.ciudad;
+	}
+
+	/**
+	* @param ciudad
+	*/
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
+
+	/**
+	* @return foto_perfil
+	*/
+	public String getFotoPerfil() {
+		return this.fotoPerfil;
+	}
+
+	/**
+	* @param foto_perfil
+	*/
+	public void setFotoPerfil(String foto_perfil) {
+		this.fotoPerfil = foto_perfil;
+	}
+
+	
 	//Metodo impresion de datos por consola
 	@Override
 	public String toString() {
-		return "Cliente [id=" + this.id + ", nombre=" + this.nombre + ", trabajo=" + this.trabajo + ", salario=" + this.salario
-				+ "]";
+		return "Cliente [id=" + this.id_usuario + ", nombre=" + this.nombre 
+				+ ", apellidos=" + this.apellidos + ", fecha nacimiento=" + this.fecha_nacimiento
+				+ ", correo=" + this.correo +  ", ciudad=" + this.ciudad + ", foto de perfil=" + this.fotoPerfil +"]";
 	}
 }
