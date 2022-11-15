@@ -12,26 +12,26 @@ import com.crud.h2.dao.IHotelDAO;
 public class HotelServiceImpl implements IHotelService{
 	
 	@Autowired
-	IHotelDAO iHotelDao;
+	IHotelDAO IHotelDAO;
 
 	public List<Hotel> listaHoteles() {
-		return iHotelDao.findAll();
+		return IHotelDAO.findAll();
 	}
 
 	public Hotel addHotel(Hotel hotel) {
-		return iHotelDao.save(hotel);
+		return IHotelDAO.save(hotel);
 	}
 
 	public Hotel getHotelById(Long id) {
-		return iHotelDao.findById(id).get();
+		return IHotelDAO.findById(id).get();
 	}
 
 	public Hotel updateHotel(Hotel Hotel) {
-		return iHotelDao.save(Hotel);
+		return IHotelDAO.save(Hotel);
 	}
 
 	public void deleteHotel(Long id) {
-		iHotelDao.deleteById(id);
+		IHotelDAO.deleteById(id);
 	}
 
 

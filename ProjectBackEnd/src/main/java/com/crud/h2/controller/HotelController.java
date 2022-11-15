@@ -3,7 +3,6 @@ package com.crud.h2.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +16,7 @@ import com.crud.h2.dto.Hotel;
 import com.crud.h2.service.HotelServiceImpl;
 
 @RestController
-@CrossOrigin(origins="https://main.d2ckn95sow20us.amplifyapp.com")
+
 @RequestMapping("/api")
 public class HotelController {
 	@Autowired

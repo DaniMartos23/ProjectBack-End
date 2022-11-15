@@ -134,7 +134,7 @@ public class Hotel {
 	@Override
 	public String toString() {
 		return "Hotel [id=" + ID_Hotel + ", nombre=" + nombre + ", direccion=" + direccion + ", descripcion=" + descripcion
-				+ ", pais=" + localidad + ", estrellas=" + estrellas + ", notamedia=" + tipo_habitaciones + ", mascotas=" + mascotas
+				+ ", localidad=" + localidad + ", estrellas=" + estrellas + ", tipo_habitaciones=" + tipo_habitaciones + ", mascotas=" + mascotas
 				+ ", tipo_pension=" + tipo_pension + "]";
 	}
 
