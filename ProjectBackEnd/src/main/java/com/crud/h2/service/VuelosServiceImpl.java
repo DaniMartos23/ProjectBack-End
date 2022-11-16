@@ -23,7 +23,7 @@ public class VuelosServiceImpl implements IVuelosService{
 		return IVuelosDAO.save(Vuelos);
 	}
 
-	public Vuelos getVuelosById(Long id) {
+	public Vuelos getVuelosById(int id) {
 		return IVuelosDAO.findById(id).get();
 	}
 
@@ -31,7 +31,7 @@ public class VuelosServiceImpl implements IVuelosService{
 		return IVuelosDAO.save(Vuelos);
 	}
 
-	public void deleteVuelos(Long id) {
+	public void deleteVuelos(int id) {
 		IVuelosDAO.deleteById(id);
 	}
 

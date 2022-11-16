@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Vuelos {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
-	private Long Id_vuelos;
+	private int Id_vuelos;
 	@Column(name = "aerolinea")//no hace falta si se llama igual
 	private String aerolinea;
 	@Column(name = "TipoAsiento")//no hace falta si se llama igual
@@ -42,7 +42,7 @@ public class Vuelos {
 		super();
 	}
 
-	public Vuelos(Long id, String aerolinea, String TipoAsiento, String maletas, String asignacion_asiento, int duracion, String escalas,
+	public Vuelos(int id, String aerolinea, String TipoAsiento, String maletas, String asignacion_asiento, int duracion, String escalas,
 			String origen, String destino) {
 		super();
 		this.Id_vuelos = id;
@@ -59,11 +59,11 @@ public class Vuelos {
 
 	//getters y setters
 	
-	public Long getId() {
+	public int getId() {
 		return Id_vuelos ;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.Id_vuelos  = id;
 	}
 
@@ -134,7 +134,7 @@ public class Vuelos {
 	//toString
 	@Override
 	public String toString() {
-		return "Hotel [id=" + Id_vuelos + ", aerolinea=" + aerolinea + ", TipoAsiento=" + TipoAsiento + ", maletas=" + maletas
+		return "Vuelos [id=" + Id_vuelos + ", aerolinea=" + aerolinea + ", TipoAsiento=" + TipoAsiento + ", maletas=" + maletas
 				+ ", asignacion_asiento=" + asignacion_asiento + ", duracion=" + duracion + ", escalas=" + escalas + ", origen=" + origen
 				+ ", destino=" + destino + "]";
 	}

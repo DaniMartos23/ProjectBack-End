@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Hotel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
-	private Long ID_Hotel;
+	private int ID_Hotel;
 	@Column(name = "nombre")//no hace falta si se llama igual
 	private String nombre;
 	@Column(name = "direccion")//no hace falta si se llama igual
@@ -31,7 +31,7 @@ public class Hotel {
 	@Column(name = "tipo_habitaciones")
 	private String tipo_habitaciones;
 	@Column(name = "mascotas")
-	private byte mascotas;
+	private boolean mascotas;
 	@Column(name = "tipo_pension")
 	private String tipo_pension;   
 	
@@ -41,8 +41,8 @@ public class Hotel {
 		super();
 	}
 
-	public Hotel(Long id, String nombre, String direccion, String descripcion, String localidad, int estrellas, String tipo_habitaciones,
-			byte mascotas, String tipo_pension) {
+	public Hotel(int id, String nombre, String direccion, String descripcion, String localidad, int estrellas, String tipo_habitaciones,
+			boolean mascotas, String tipo_pension) {
 		super();
 		this.ID_Hotel = id;
 		this.nombre = nombre;
@@ -58,11 +58,11 @@ public class Hotel {
 
 	//getters y setters
 	
-	public Long getId() {
+	public int getId() {
 		return ID_Hotel;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.ID_Hotel = id;
 	}
 
@@ -114,11 +114,11 @@ public class Hotel {
 		this.tipo_habitaciones = tipo_habitaciones;
 	}
 	
-	public byte getmascotas() {
+	public boolean getmascotas() {
 		return mascotas;
 	}
 
-	public void setmascotas(byte mascotas) {
+	public void setmascotas(boolean mascotas) {
 		this.mascotas = mascotas;
 	}
 
@@ -137,17 +137,6 @@ public class Hotel {
 				+ ", localidad=" + localidad + ", estrellas=" + estrellas + ", tipo_habitaciones=" + tipo_habitaciones + ", mascotas=" + mascotas
 				+ ", tipo_pension=" + tipo_pension + "]";
 	}
-
-
-
-	
-
-	
-	
-	
-
-	
-
 	
 	
 	

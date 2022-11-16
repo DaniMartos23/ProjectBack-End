@@ -22,7 +22,7 @@ public class HotelServiceImpl implements IHotelService{
 		return IHotelDAO.save(hotel);
 	}
 
-	public Hotel getHotelById(Long id) {
+	public Hotel getHotelById(int id) {
 		return IHotelDAO.findById(id).get();
 	}
 
@@ -30,7 +30,7 @@ public class HotelServiceImpl implements IHotelService{
 		return IHotelDAO.save(Hotel);
 	}
 
-	public void deleteHotel(Long id) {
+	public void deleteHotel(int id) {
 		IHotelDAO.deleteById(id);
 	}
 

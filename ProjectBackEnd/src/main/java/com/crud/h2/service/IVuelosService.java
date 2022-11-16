@@ -3,7 +3,9 @@ import java.util.List;
 
 import com.crud.h2.dto.Vuelos;
 
-public class IVuelosService {
+
+	public interface IVuelosService{
+		
 	public List<Vuelos> listaVuelos();
 
 	public Vuelos addVuelos(Vuelos vuelo);

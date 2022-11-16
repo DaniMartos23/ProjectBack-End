@@ -34,13 +34,13 @@ public class HotelController {
 	}
 
 	@GetMapping("/hoteles/{id}")
-	public Hotel getHotelById(@PathVariable(name = "id") Long id) {
+	public Hotel getHotelById(@PathVariable(name = "id") int id) {
 
 		return HotelService.getHotelById(id);
 	}
 
 	@PutMapping("/hoteles/{id}")
-	public Hotel updateHotel(@PathVariable(name = "id") Long id, @RequestBody Hotel hotel) {
+	public Hotel updateHotel(@PathVariable(name = "id") int id, @RequestBody Hotel hotel) {
 		System.out.println(hotel);
 		Hotel Hotel_seleccionado = new Hotel();
 		Hotel Hotel_actualizado = new Hotel();
@@ -62,7 +62,7 @@ public class HotelController {
 	}
 
 	@DeleteMapping("/hoteles/{id}")
-	public void deleteHotel(@PathVariable(name = "id") Long id) {
+	public void deleteHotel(@PathVariable(name = "id") int id) {
 		HotelService.deleteHotel(id);
 	}
 }
