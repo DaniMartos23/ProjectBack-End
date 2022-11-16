@@ -6,9 +6,9 @@ import com.crud.h2.dto.Vuelos;
 public class IVuelosService {
 	public List<Vuelos> listaVuelos();
 
-	public Vuelos addVuelos(Vuelos vuelos);
+	public Vuelos addVuelos(Vuelos vuelo);
 	
-	public Vuelos updateVuelos(Vuelos vuelos);
+	public Vuelos updateVuelos(Vuelos vuelo);
 	
 	public Vuelos getVuelosById(Long id);
 
