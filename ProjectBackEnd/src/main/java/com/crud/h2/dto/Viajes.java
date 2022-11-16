@@ -23,8 +23,7 @@ public class Viajes {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_Hotel")
-	
+	@JoinColumn(name = "ID_Hotel")	
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_Vuelos")

@@ -12,8 +12,8 @@ import com.crud.h2.dto.Vuelos;
 	
 	public Vuelos updateVuelos(Vuelos vuelo);
 	
-	public Vuelos getVuelosById(Long id);
+	public Vuelos getVuelosById(int id);
 
-	public void deleteVuelos(Long id);
+	public void deleteVuelos(int id);
 
 }
