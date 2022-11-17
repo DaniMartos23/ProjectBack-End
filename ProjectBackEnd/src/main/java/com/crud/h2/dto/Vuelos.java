@@ -16,8 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="Vuelos")
 public class Vuelos {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
+	@Id	
 	private int Id_vuelos;
 	@Column(name = "aerolinea")//no hace falta si se llama igual
 	private String aerolinea;
@@ -37,13 +36,17 @@ public class Vuelos {
 	private String destino;   
 	
 	
+	@OneToMany
+	@JoinColumn(name = "Id_Vuelos")
+	private List<Viajes> Viaje;
+	
 	//contructores
 	public Vuelos() {
 		super();
 	}
 
 	public Vuelos(int id, String aerolinea, String TipoAsiento, String maletas, String asignacion_asiento, int duracion, String escalas,
-			String origen, String destino) {
+			String origen, String destino,List<Viajes> Viaje ) {
 		super();
 		this.Id_vuelos = id;
 		this.aerolinea = aerolinea;
@@ -54,6 +57,7 @@ public class Vuelos {
 		this.escalas = escalas;
 		this.origen = origen;
 		this.destino = destino;
+		this.Viaje = Viaje;
 		
 	}
 
@@ -130,13 +134,21 @@ public class Vuelos {
 	public void setdestino(String destino) {
 		this.destino = destino;
 	}
-	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Viajes")
+	public List<Viajes> getViaje() {
+		return Viaje;
+	}
+
+	public void setViaje(List<Viajes> Viaje) {
+		this.Viaje = Viaje;
+	}
 	//toString
 	@Override
 	public String toString() {
 		return "Vuelos [id=" + Id_vuelos + ", aerolinea=" + aerolinea + ", TipoAsiento=" + TipoAsiento + ", maletas=" + maletas
 				+ ", asignacion_asiento=" + asignacion_asiento + ", duracion=" + duracion + ", escalas=" + escalas + ", origen=" + origen
-				+ ", destino=" + destino + "]";
+				+ ", destino=" + destino + "Viaje="+ Viaje + "]";
 	}
 }
 

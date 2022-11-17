@@ -15,8 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="Hotel")
 public class Hotel {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
+	@Id	
 	private int ID_Hotel;
 	@Column(name = "nombre")//no hace falta si se llama igual
 	private String nombre;
@@ -35,6 +34,10 @@ public class Hotel {
 	@Column(name = "tipo_pension")
 	private String tipo_pension;   
 	
+	@OneToMany
+	@JoinColumn(name = "ID_Hotel")
+	private List<Viajes> Viaje;
+	
 	
 	//contructores
 	public Hotel() {
@@ -42,7 +45,7 @@ public class Hotel {
 	}
 
 	public Hotel(int id, String nombre, String direccion, String descripcion, String localidad, int estrellas, String tipo_habitaciones,
-			boolean mascotas, String tipo_pension) {
+			boolean mascotas, String tipo_pension,List<Viajes> Viaje) {
 		super();
 		this.ID_Hotel = id;
 		this.nombre = nombre;
@@ -53,6 +56,7 @@ public class Hotel {
 		this.tipo_habitaciones = tipo_habitaciones;
 		this.mascotas = mascotas;
 		this.tipo_pension = tipo_pension;
+		this.Viaje = Viaje;
 		
 	}
 
@@ -130,12 +134,21 @@ public class Hotel {
 		this.tipo_pension = tipo_pension;
 	}
 	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Viajes")
+	public List<Viajes> getViaje() {
+		return Viaje;
+	}
+
+	public void setViaje(List<Viajes> Viaje) {
+		this.Viaje = Viaje;
+	}
 	//toString
 	@Override
 	public String toString() {
 		return "Hotel [id=" + ID_Hotel + ", nombre=" + nombre + ", direccion=" + direccion + ", descripcion=" + descripcion
 				+ ", localidad=" + localidad + ", estrellas=" + estrellas + ", tipo_habitaciones=" + tipo_habitaciones + ", mascotas=" + mascotas
-				+ ", tipo_pension=" + tipo_pension + "]";
+				+ ", tipo_pension=" + tipo_pension + "Viaje="+ Viaje +"]";
 	}
 	
 	

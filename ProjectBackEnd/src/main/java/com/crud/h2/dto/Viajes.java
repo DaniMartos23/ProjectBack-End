@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Viajes {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
 	private int ID_Viajes;	
 	
 	
@@ -30,7 +30,7 @@ public class Viajes {
 	private Hotel Hotel;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_Vuelos")
+	@JoinColumn(name = "Id_Vuelos")
 	private Vuelos Vuelos;
 	
 	@OneToMany
@@ -96,12 +96,12 @@ public class Viajes {
 		this.destino = destino;
 	}
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chollos")
-	public List<chollos> getchollos() {
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Chollo")
+	public List<Chollo> getchollos() {
 		return chollos;
 	}
 
-	public void setchollos(List<chollos> chollos) {
+	public void setchollos(List<Chollo> chollos) {
 		this.chollos = chollos;
 	}
 	//toString
