@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.example.demo.dto.Equipo;
+import com.example.demo.dto.Investigador;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -23,10 +26,12 @@ public class Viajes {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_Hotel")	
+	@JoinColumn(name = "ID_Hotel")
+	private Hotel Hotel;
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_Vuelos")
+	private Vuelos Vuelos;
 	
 	@Column(name = "origen")
 	private String origen;
@@ -38,20 +43,37 @@ public class Viajes {
 		
 	}
 
-	public Viajes(int id, String origen, String destino) {
+	public Viajes(int id, Hotel Hotel, Vuelos Vuelos,  String origen, String destino) {
 		super();
 		this.ID_Viajes = id;
+		this.Hotel= Hotel;
+		this.Vuelos = Vuelos;		
 		this.origen = origen;
 		this.destino = destino;
 		
+		
 	}
 
-	public int getId() {
+	public int getid() {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.ID_Viajes = id;
+	public void setid(int id) {
+		this.id = id;
+	}
+	public Hotel getHotel() {
+		return Hotel;
+	}
+
+	public void setHotel (Hotel Hotel) {
+		this.Hotel= Hotel;
+	}
+	public Vuelos getVuelos() {
+		return Vuelos;
+	}
+
+	public void setVuelos (Vuelos Vuelos) {
+		this.Vuelos= Vuelos;
 	}
 
 	public String getorigen() {
@@ -73,7 +95,7 @@ public class Viajes {
 	//toString
 	@Override
 	public String toString() {
-		return "Viajes [id=" + ID_Viajes + ", origen=" + origen + ", destino=" + destino + "]";
+		return "Viajes [id=" + ID_Viajes +",Hotel="+ Hotel +"Vuelos="+ Vuelos + ", origen=" + origen + ", destino=" + destino + "]";
 	}
 	
 	

@@ -35,13 +35,13 @@ public class VuelosController {
 	}
 
 	@GetMapping("/Vuelos/{id}")
-	public Vuelos getVuelosById(@PathVariable(name = "id") Long id) {
+	public Vuelos getVuelosById(@PathVariable(name = "id") int id) {
 
 		return VuelosService.getVuelosById(id);
 	}
 
 	@PutMapping("/Vuelos/{id}")
-	public Vuelos updateVuelos(@PathVariable(name = "id") Long id, @RequestBody Vuelos Vuelos) {
+	public Vuelos updateVuelos(@PathVariable(name = "id") int id, @RequestBody Vuelos Vuelos) {
 		System.out.println(Vuelos);
 		Vuelos Vuelo_seleccionado = new Vuelos();
 		Vuelos Vuelo_actualizado = new Vuelos();
@@ -63,7 +63,7 @@ public class VuelosController {
 	}
 
 	@DeleteMapping("/Vuelos/{id}")
-	public void deleteVuelos(@PathVariable(name = "id") Long id) {
+	public void deleteVuelos(@PathVariable(name = "id") int id) {
 		VuelosService.deleteVuelos(id);
 	}
 }
