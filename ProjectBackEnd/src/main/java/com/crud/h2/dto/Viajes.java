@@ -49,8 +49,7 @@ public class Viajes {
 		this.Hotel= Hotel;
 		this.Vuelos = Vuelos;		
 		this.origen = origen;
-		this.destino = destino;
-		
+		this.destino = destino;		
 		
 	}
 
