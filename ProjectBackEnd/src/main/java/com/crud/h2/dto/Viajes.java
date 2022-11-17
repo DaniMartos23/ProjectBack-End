@@ -33,6 +33,10 @@ public class Viajes {
 	@JoinColumn(name = "ID_Vuelos")
 	private Vuelos Vuelos;
 	
+	@OneToMany
+	@JoinColumn(name = "ID_Viajes")
+	private List<Chollo> chollos;
+	
 	@Column(name = "origen")
 	private String origen;
 	@Column(name = "destino")
@@ -43,13 +47,14 @@ public class Viajes {
 		
 	}
 
-	public Viajes(int id, Hotel Hotel, Vuelos Vuelos,  String origen, String destino) {
+	public Viajes(int id, Hotel Hotel, Vuelos Vuelos,  String origen, String destino, List<Chollo> chollos) {
 		super();
 		this.ID_Viajes = id;
 		this.Hotel= Hotel;
 		this.Vuelos = Vuelos;		
 		this.origen = origen;
-		this.destino = destino;		
+		this.destino = destino;	
+		this.chollos = chollos;
 		
 	}
 
@@ -90,11 +95,19 @@ public class Viajes {
 	public void setdestino(String destino) {
 		this.destino = destino;
 	}
-	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chollos")
+	public List<chollos> getchollos() {
+		return chollos;
+	}
+
+	public void setchollos(List<chollos> chollos) {
+		this.chollos = chollos;
+	}
 	//toString
 	@Override
 	public String toString() {
-		return "Viajes [id=" + ID_Viajes +",Hotel="+ Hotel +"Vuelos="+ Vuelos + ", origen=" + origen + ", destino=" + destino + "]";
+		return "Viajes [id=" + ID_Viajes +",Hotel="+ Hotel +"Vuelos="+ Vuelos + ", origen=" + origen + ", destino=" + destino + "chollos="+ chollos + "]";
 	}
 	
 	
