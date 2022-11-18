@@ -16,22 +16,21 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "administradores")
-public class administradores {
+public class administradores extends Usuario{
+	
+	
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
-	private int ID_administradores;	
+	@JoinColumn(name = "ID_usuario")
+	private Usuario usuarios;
 	
 	@Column(name = "empresa")
 	private String empresa;
 	
-	@ManyToOne
+	@OneToMany
 	@JoinColumn(name = "ID_chollo")
-	private Chollo chollo;
+	private List<Chollo> chollos;
 	
-	@ManyToOne
-	@JoinColumn(name = "ID_usuario")
-	private Usuario usuarios;
 	
 
 	
@@ -42,29 +41,17 @@ public class administradores {
 
 	
 	
-	public administradores(int iD_administradores, String empresa, Chollo chollo, Usuario usuarios) {
-		ID_administradores = iD_administradores;
+	public administradores(Usuario usuarios, String empresa, List<Chollo> chollo ) {
+		super(usuarios.getId(),usuarios.getNombre(),usuarios.getApellidos(),usuarios.getFechaNacimiento(),usuarios.getCorreo(),usuarios.getCiudad(),usuarios.getFotoPerfil());
 		this.empresa = empresa;
-		this.chollo = chollo;
+		this.chollos = chollo;
 		this.usuarios = usuarios;
 	}
 
 
 
 
-	public int getID_administradores() {
-		return ID_administradores;
-	}
-
-
-
-
-	public void setID_administradores(int iD_administradores) {
-		ID_administradores = iD_administradores;
-	}
-
-
-
+	
 
 	public String getEmpresa() {
 		return empresa;
@@ -77,18 +64,19 @@ public class administradores {
 		this.empresa = empresa;
 	}
 
+	
 
-
-
-	public Chollo getChollo() {
-		return chollo;
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chollo")
+	public List<Chollo> getChollo() {
+		return chollos;
 	}
 
 
 
 
-	public void setChollo(Chollo chollo) {
-		this.chollo = chollo;
+	public void setChollo(List<Chollo> chollo) {
+		this.chollos = chollo;
 	}
 
 
@@ -111,7 +99,7 @@ public class administradores {
 	//toString
 	@Override
 	public String toString() {
-		return "administradores [id=" + ID_administradores +",usuarios="+ usuarios + "chollo="+ chollo + "empresa="+empresa+ "]";
+		return "administradores [usuarios=" + usuarios.toString() +",usuarios="+ usuarios + "chollo="+ chollos + "empresa="+empresa+ "]";
 	}
 	
 	
