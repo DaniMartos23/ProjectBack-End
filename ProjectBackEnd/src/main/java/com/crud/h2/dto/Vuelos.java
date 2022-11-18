@@ -37,7 +37,7 @@ public class Vuelos {
 	
 	
 	@OneToMany
-	@JoinColumn(name = "Id_vuelos")
+	@JoinColumn(name = "ID_vuelo")
 	private List<Viajes> Viaje;
 	
 	//contructores
@@ -135,7 +135,7 @@ public class Vuelos {
 		this.destino = destino;
 	}
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Viajes")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "viajes")
 	public List<Viajes> getViaje() {
 		return Viaje;
 	}
