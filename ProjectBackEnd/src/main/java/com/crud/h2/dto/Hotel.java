@@ -13,9 +13,11 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="Hotel")
+@Table(name="hoteles")
 public class Hotel {
-	@Id	
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
 	private int ID_Hotel;
 	@Column(name = "nombre")//no hace falta si se llama igual
 	private String nombre;
@@ -46,7 +48,7 @@ public class Hotel {
 
 	public Hotel(int id, String nombre, String direccion, String descripcion, String localidad, int estrellas, String tipo_habitaciones,
 			boolean mascotas, String tipo_pension,List<Viajes> Viaje) {
-		super();
+		
 		this.ID_Hotel = id;
 		this.nombre = nombre;
 		this.direccion = direccion;

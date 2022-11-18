@@ -42,9 +42,9 @@ public class Chollo {
 	@Column(name = "unidades")
 	private int unidades;
 	
-	
+
 	@ManyToOne
-    @JoinColumn(name = "ID_Viajes")
+    @JoinColumn(name = "ID_viaje")
 	Viajes viajes;
 
 
