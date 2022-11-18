@@ -35,6 +35,7 @@ public class Viajes {
 	@JoinColumn(name = "ID_Viajes")
 	private List<Chollo> chollos;
 	
+	
 	@Column(name = "origen")
 	private String origen;
 	@Column(name = "destino")
@@ -57,11 +58,11 @@ public class Viajes {
 	}
 
 	public int getid() {
-		return id;
+		return ID_Viajes;
 	}
 
 	public void setid(int id) {
-		this.id = id;
+		this.ID_Viajes = id;
 	}
 	public Hotel getHotel() {
 		return Hotel;
