@@ -26,11 +26,11 @@ public class administradores {
 	private String empresa;
 	
 	@ManyToOne
-	@JoinColumn(name = "Id_chollo")
+	@JoinColumn(name = "ID_chollo")
 	private Chollo chollo;
 	
 	@ManyToOne
-	@JoinColumn(name = "Id_usuarios")
+	@JoinColumn(name = "ID_usuarios")
 	private Usuario usuarios;
 	
 
