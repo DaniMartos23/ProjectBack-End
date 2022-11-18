@@ -23,24 +23,24 @@ public class VuelosController {
 	@Autowired
 	VuelosServiceImpl VuelosService;
 
-	@GetMapping("/Vuelos")
+	@GetMapping("/vuelos")
 	public List<Vuelos> listaVuelos() {
 		return VuelosService.listaVuelos();
 	}
 
-	@PostMapping("/Vuelos")
+	@PostMapping("/vuelos")
 	public Vuelos addVuelos(@RequestBody Vuelos Vuelos) {
 
 		return VuelosService.addVuelos(Vuelos);
 	}
 
-	@GetMapping("/Vuelos/{id}")
+	@GetMapping("/vuelos/{id}")
 	public Vuelos getVuelosById(@PathVariable(name = "id") int id) {
 
 		return VuelosService.getVuelosById(id);
 	}
 
-	@PutMapping("/Vuelos/{id}")
+	@PutMapping("/vuelos/{id}")
 	public Vuelos updateVuelos(@PathVariable(name = "id") int id, @RequestBody Vuelos Vuelos) {
 		System.out.println(Vuelos);
 		Vuelos Vuelo_seleccionado = new Vuelos();
@@ -62,7 +62,7 @@ public class VuelosController {
 		return Vuelo_actualizado;
 	}
 
-	@DeleteMapping("/Vuelos/{id}")
+	@DeleteMapping("/vuelos/{id}")
 	public void deleteVuelos(@PathVariable(name = "id") int id) {
 		VuelosService.deleteVuelos(id);
 	}
