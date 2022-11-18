@@ -30,7 +30,7 @@ public class administradores {
 	private Chollo chollo;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_usuarios")
+	@JoinColumn(name = "ID_usuario")
 	private Usuario usuarios;
 	
 
