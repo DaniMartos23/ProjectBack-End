@@ -9,11 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.example.demo.dto.Equipo;
-import com.example.demo.dto.Investigador;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -26,7 +24,7 @@ public class Viajes {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_Hotel")
+	@JoinColumn(name = "ID_hotel")
 	private Hotel Hotel;
 	
 	@ManyToOne
