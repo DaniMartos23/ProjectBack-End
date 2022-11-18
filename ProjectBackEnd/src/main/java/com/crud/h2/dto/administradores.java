@@ -27,11 +27,11 @@ public class administradores {
 	
 	@ManyToOne
 	@JoinColumn(name = "Id_chollo")
-	private chollo chollo;
+	private Chollo chollo;
 	
 	@ManyToOne
 	@JoinColumn(name = "Id_usuarios")
-	private usuarios usuarios;
+	private Usuario usuarios;
 	
 
 	
@@ -39,47 +39,75 @@ public class administradores {
 		
 	}
 
-	public administradores(int id, String empresa, usuarios usuarios, chollo chollo) {
-		super();
-		this.ID_administradores = id;
+
+	
+	
+	public administradores(int iD_administradores, String empresa, Chollo chollo, Usuario usuarios) {
+		ID_administradores = iD_administradores;
 		this.empresa = empresa;
-		this.usuarios  = usuarios;		
 		this.chollo = chollo;
-		
-		
-	}
-	public int getid() {
-		return id;
+		this.usuarios = usuarios;
 	}
 
-	public void setid(int id) {
-		this.id = id;
+
+
+
+	public int getID_administradores() {
+		return ID_administradores;
 	}
-	public int getempresa) {
+
+
+
+
+	public void setID_administradores(int iD_administradores) {
+		ID_administradores = iD_administradores;
+	}
+
+
+
+
+	public String getEmpresa() {
 		return empresa;
 	}
 
-	public void setempresa(int empresa) {
+
+
+
+	public void setEmpresa(String empresa) {
 		this.empresa = empresa;
 	}
-	public usuarios getusuarios() {
-		return usuarios;
-	}
 
-	public void setusuarios (usuarios usuariosl) {
-		this.usuarios= usuarios;
-	}
-	public chollo getchollo() {
+
+
+
+	public Chollo getChollo() {
 		return chollo;
 	}
 
-	public void setchollo (chollo chollo) {
-		this.chollo= chollo;
+
+
+
+	public void setChollo(Chollo chollo) {
+		this.chollo = chollo;
 	}
 
-	
-	
-	
+
+
+
+	public Usuario getUsuarios() {
+		return usuarios;
+	}
+
+
+
+
+	public void setUsuarios(Usuario usuarios) {
+		this.usuarios = usuarios;
+	}
+
+
+
+
 	//toString
 	@Override
 	public String toString() {

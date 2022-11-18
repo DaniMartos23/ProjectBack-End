@@ -57,7 +57,7 @@ public class CholloController {
 		chollo_seleccionado.setValoracion(chollo.getValoracion());
 		chollo_seleccionado.setViajes(chollo.getViajes());
 		
-		//chollo_seleccionado.setAdmin(chollo.getAdmin());
+		chollo_seleccionado.setAdmin(chollo.getAdmin());
 
 		chollo_actualizado = cholloService.updateChollo(chollo_seleccionado);
 

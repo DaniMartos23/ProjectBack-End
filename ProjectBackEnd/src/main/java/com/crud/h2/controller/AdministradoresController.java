@@ -45,10 +45,10 @@ public class AdministradoresController {
 		administradores Administradores_seleccionado = new administradores();
 		administradores Administradores_actualizado = new administradores();
 		
-		Administradores_seleccionado = AdministradoresService.getHotelById(id);
-		Administradores_seleccionado.setempresa(Administradores.getempresa());
-		Administradores_seleccionado.setusuarios(Administradores.getusuarios());
-		Administradores_seleccionado.setchollo(Administradores.getchollo());
+		Administradores_seleccionado = AdministradoresService.getAdministradoresById(id);
+		Administradores_seleccionado.setUsuarios(Administradores.getUsuarios());
+		Administradores_seleccionado.setEmpresa(Administradores.getEmpresa());
+		Administradores_seleccionado.setChollo(Administradores.getChollo());
 
 		Administradores_actualizado = AdministradoresService.updateAdministradores(Administradores_seleccionado);
 

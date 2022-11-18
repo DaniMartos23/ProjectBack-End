@@ -15,25 +15,37 @@ public class AdministradoresServiceImpl implements IAdministradoresService{
 	@Autowired
 	IAdministradoresDAO IAdministradoresDAO;
 
+	@Override
 	public List<administradores> listaAdministradores() {
+		// TODO Auto-generated method stub
 		return IAdministradoresDAO.findAll();
 	}
 
-	public administradores addHotel(administradores Administradores) {
+	@Override
+	public administradores addAdministradores(administradores Administradores) {
+		// TODO Auto-generated method stub
 		return IAdministradoresDAO.save(Administradores);
 	}
 
-	public administradores getHotelById(int id) {
+	@Override
+	public administradores updateAdministradores(administradores Administradores) {
+		// TODO Auto-generated method stub
+		return IAdministradoresDAO.save(Administradores);
+	}
+
+	@Override
+	public administradores getAdministradoresById(int id) {
+		// TODO Auto-generated method stub
 		return IAdministradoresDAO.findById(id).get();
 	}
 
-	public administradores updateHotel(administradores Administradores) {
-		return IAdministradoresDAO.save(Administradores);
-	}
-
+	@Override
 	public void deleteAdministradores(int id) {
+		// TODO Auto-generated method stub
 		IAdministradoresDAO.deleteById(id);
 	}
+
+	
 
 
 }
