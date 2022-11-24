@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name="vuelos")
 public class Vuelos {
 	@Id	
-	private int Id_vuelos;
+	private int Id_vuelo;
 	@Column(name = "aereolinea")//no hace falta si se llama igual
 	private String aerolinea;
 	@Column(name = "TipoAsiento")//no hace falta si se llama igual
@@ -48,7 +48,7 @@ public class Vuelos {
 	public Vuelos(int id, String aerolinea, String TipoAsiento, String maletas, String asignacion_asiento, int duracion, String escalas,
 			String origen, String destino,List<Viajes> Viaje ) {
 		super();
-		this.Id_vuelos = id;
+		this.Id_vuelo = id;
 		this.aerolinea = aerolinea;
 		this.TipoAsiento = TipoAsiento;
 		this.maletas = maletas;
@@ -64,11 +64,11 @@ public class Vuelos {
 	//getters y setters
 	
 	public int getId() {
-		return Id_vuelos ;
+		return Id_vuelo ;
 	}
 
 	public void setId(int id) {
-		this.Id_vuelos  = id;
+		this.Id_vuelo  = id;
 	}
 
 	public String getaerolinea() {
@@ -146,7 +146,7 @@ public class Vuelos {
 	//toString
 	@Override
 	public String toString() {
-		return "Vuelos [id=" + Id_vuelos + ", aerolinea=" + aerolinea + ", TipoAsiento=" + TipoAsiento + ", maletas=" + maletas
+		return "Vuelos [id=" + Id_vuelo + ", aerolinea=" + aerolinea + ", TipoAsiento=" + TipoAsiento + ", maletas=" + maletas
 				+ ", asignacion_asiento=" + asignacion_asiento + ", duracion=" + duracion + ", escalas=" + escalas + ", origen=" + origen
 				+ ", destino=" + destino + "Viaje="+ Viaje + "]";
 	}

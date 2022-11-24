@@ -28,7 +28,7 @@ public class Viajes {
 	private Hotel Hotel;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_vuelos")
+	@JoinColumn(name = "ID_vuelo")
 	private Vuelos Vuelos;
 	
 	@OneToMany
