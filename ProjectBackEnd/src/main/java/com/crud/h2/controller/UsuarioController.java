@@ -76,13 +76,8 @@ public class UsuarioController {
 	@GetMapping("/usuarios/{id}")
 	public Usuario UsuarioXID(@PathVariable(name="id") int id) {
 		
-		Usuario usuario_xid= new Usuario();
+		return usuarioServiceImpl.usuarioXID(id);
 		
-		usuario_xid= usuarioServiceImpl.usuarioXID(id);
-		
-		System.out.println("Usuario XID: "+usuario_xid);
-		
-		return usuario_xid;
 	}
 	
 	@PutMapping("/usuarios/{id}")
