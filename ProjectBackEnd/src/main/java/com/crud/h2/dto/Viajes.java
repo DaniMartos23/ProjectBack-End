@@ -20,7 +20,7 @@ public class Viajes {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
-	private int ID_Viajes;	
+	private int ID_viaje;	
 	
 	
 	@ManyToOne
@@ -48,7 +48,7 @@ public class Viajes {
 
 	public Viajes(int id, Hotel Hotel, Vuelos Vuelos,  String origen, String destino, List<Chollo> chollos) {
 		super();
-		this.ID_Viajes = id;
+		this.ID_viaje = id;
 		this.Hotel= Hotel;
 		this.Vuelos = Vuelos;		
 		this.origen = origen;
@@ -58,11 +58,11 @@ public class Viajes {
 	}
 
 	public int getid() {
-		return ID_Viajes;
+		return ID_viaje;
 	}
 
 	public void setid(int id) {
-		this.ID_Viajes = id;
+		this.ID_viaje = id;
 	}
 	public Hotel getHotel() {
 		return Hotel;
@@ -106,7 +106,7 @@ public class Viajes {
 	//toString
 	@Override
 	public String toString() {
-		return "Viajes [id=" + ID_Viajes +",Hotel="+ Hotel +"Vuelos="+ Vuelos + ", origen=" + origen + ", destino=" + destino + "chollos="+ chollos + "]";
+		return "Viajes [id=" + ID_viaje +",Hotel="+ Hotel +"Vuelos="+ Vuelos + ", origen=" + origen + ", destino=" + destino + "chollos="+ chollos + "]";
 	}
 	
 	
