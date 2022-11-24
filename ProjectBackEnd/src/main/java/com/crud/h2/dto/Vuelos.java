@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Vuelos {
 	@Id	
 	private int Id_vuelos;
-	@Column(name = "aerolinea")//no hace falta si se llama igual
+	@Column(name = "aereolinea")//no hace falta si se llama igual
 	private String aerolinea;
 	@Column(name = "TipoAsiento")//no hace falta si se llama igual
 	private String TipoAsiento;
