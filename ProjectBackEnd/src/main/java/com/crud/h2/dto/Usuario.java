@@ -29,11 +29,19 @@ public class Usuario {
 	private String ciudad;
 	@Column(name = "fotoPerfil")
 	private String fotoPerfil;
+	@Column(name = "contraseña")
+	private String contraseña;
 	
 
 	
 
 	
+	public Usuario(String nombre, String contraseña) {
+		this.contraseña = contraseña;
+		this.nombre = nombre;
+	}
+	
+	//
 	public Usuario() {
 		
 	}
@@ -117,6 +125,14 @@ public class Usuario {
 		this.fecha_nacimiento = fecha;
 	}
 	
+	public String getContraseña() {
+		return contraseña;
+	}
+
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
+	}
+
 	/**
 	* @return correo
 	*/
