@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.crud.h2.dao.IAdministradoresDAO;
-import com.crud.h2.dto.administradores;
+import com.crud.h2.dto.Administradores;
 
 
 @Service
@@ -16,25 +16,25 @@ public class AdministradoresServiceImpl implements IAdministradoresService{
 	IAdministradoresDAO IAdministradoresDAO;
 
 	@Override
-	public List<administradores> listaAdministradores() {
+	public List<Administradores> listaAdministradores() {
 		// TODO Auto-generated method stub
 		return IAdministradoresDAO.findAll();
 	}
 
 	@Override
-	public administradores addAdministradores(administradores Administradores) {
+	public Administradores addAdministradores(Administradores Administradores) {
 		// TODO Auto-generated method stub
 		return IAdministradoresDAO.save(Administradores);
 	}
 
 	@Override
-	public administradores updateAdministradores(administradores Administradores) {
+	public Administradores updateAdministradores(Administradores Administradores) {
 		// TODO Auto-generated method stub
 		return IAdministradoresDAO.save(Administradores);
 	}
 
 	@Override
-	public administradores getAdministradoresById(int id) {
+	public Administradores getAdministradoresById(int id) {
 		// TODO Auto-generated method stub
 		return IAdministradoresDAO.findById(id).get();
 	}

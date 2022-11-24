@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crud.h2.dto.administradores;
+import com.crud.h2.dto.Administradores;
 import com.crud.h2.service.AdministradoresServiceImpl;
 
 @RestController
@@ -23,27 +23,27 @@ public class AdministradoresController {
 	AdministradoresServiceImpl AdministradoresService;
 
 	@GetMapping("/administradores")
-	public List<administradores> listaAdministradores() {
+	public List<Administradores> listaAdministradores() {
 		return AdministradoresService.listaAdministradores();
 	}
 
 	@PostMapping("administradores")
-	public administradores addAdministradores(@RequestBody administradores Administradores) {
+	public Administradores addAdministradores(@RequestBody Administradores Administradores) {
 
 		return AdministradoresService.addAdministradores(Administradores);
 	}
 
 	@GetMapping("/administradores/{id}")
-	public administradores getAdministradoresById(@PathVariable(name = "id") int id) {
+	public Administradores getAdministradoresById(@PathVariable(name = "id") int id) {
 
 		return AdministradoresService.getAdministradoresById(id);
 	}
 
 	@PutMapping("/Administradores/{id}")
-	public administradores updateAdministradores(@PathVariable(name = "id") int id, @RequestBody administradores Administradores) {
+	public Administradores updateAdministradores(@PathVariable(name = "id") int id, @RequestBody Administradores Administradores) {
 		System.out.println(Administradores);
-		administradores Administradores_seleccionado = new administradores();
-		administradores Administradores_actualizado = new administradores();
+		Administradores Administradores_seleccionado = new Administradores();
+		Administradores Administradores_actualizado = new Administradores();
 		
 		Administradores_seleccionado = AdministradoresService.getAdministradoresById(id);
 		Administradores_seleccionado.setNombre(Administradores.getNombre());

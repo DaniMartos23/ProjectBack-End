@@ -2,17 +2,17 @@ package com.crud.h2.service;
 
 import java.util.List;
 
-import com.crud.h2.dto.administradores;
+import com.crud.h2.dto.Administradores;
 
 public interface IAdministradoresService {
 
-	public List<administradores> listaAdministradores();
+	public List<Administradores> listaAdministradores();
 
-	public administradores addAdministradores(administradores Administradores);
+	public Administradores addAdministradores(Administradores Administradores);
 	
-	public administradores updateAdministradores(administradores Administradores);
+	public Administradores updateAdministradores(Administradores Administradores);
 	
-	public administradores getAdministradoresById(int id);
+	public Administradores getAdministradoresById(int id);
 
 	public void deleteAdministradores(int id);
 }

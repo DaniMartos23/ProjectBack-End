@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Admin;
 
 
 @Entity
@@ -52,7 +51,7 @@ public class Chollo {
 
     @ManyToOne
     @JoinColumn(name = "ID_usuario")
-    Admin admin;
+    Administradores administradores;
 	
 
 	
@@ -63,7 +62,7 @@ public class Chollo {
 
 
 	public Chollo(int iD_chollo, Date fecha, String titulo, int precio, String descripcion, int valoracion,
-			int unidades, Viajes viajes, Admin admin) {
+			int unidades, Viajes viajes, Administradores administradores) {
 		
 		ID_chollo = iD_chollo;
 		this.fecha = fecha;
@@ -73,19 +72,19 @@ public class Chollo {
 		this.valoracion = valoracion;
 		this.unidades = unidades;
 		this.viajes = viajes;
-		this.admin = admin;
+		this.administradores = administradores;
 	}
  
 	
 
-	public Admin getAdmin() {
-		return admin;
+	public Administradores getAdministradores() {
+		return administradores;
 	}
 
 
 
-	public void setAdmin(Admin admin) {
-		this.admin = admin;
+	public void setAdministradores(Administradores administradores) {
+		this.administradores = administradores;
 	}
 
 
