@@ -46,9 +46,16 @@ public class AdministradoresController {
 		administradores Administradores_actualizado = new administradores();
 		
 		Administradores_seleccionado = AdministradoresService.getAdministradoresById(id);
-		Administradores_seleccionado.setUsuarios(Administradores.getUsuarios());
+		Administradores_seleccionado.setNombre(Administradores.getNombre());
+		Administradores_seleccionado.setApellido(Administradores.getApellidos());
+		Administradores_seleccionado.setFechaNacimiento(Administradores.getFechaNacimiento());
+		Administradores_seleccionado.setCorreo(Administradores.getCorreo());
+		Administradores_seleccionado.setCiudad(Administradores.getCiudad());
+		Administradores_seleccionado.setFotoPerfil(Administradores.getFotoPerfil());
+		Administradores_seleccionado.setReservas(Administradores.getReservas());
 		Administradores_seleccionado.setEmpresa(Administradores.getEmpresa());
 		Administradores_seleccionado.setChollo(Administradores.getChollo());
+		
 
 		Administradores_actualizado = AdministradoresService.updateAdministradores(Administradores_seleccionado);
 

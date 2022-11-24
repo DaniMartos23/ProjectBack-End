@@ -1,18 +1,12 @@
 package com.crud.h2.dto;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="reserva")
@@ -28,7 +22,7 @@ public class Reserva {
 	@JoinColumn(name= "ID_chollo")
 	private Chollo chollo;
 	
-	@JoinColumn(name="fecha_reserva")
+	@Column(name="fecha_reserva")
 	private Date fecha_reserva;
 	
 	//contructores

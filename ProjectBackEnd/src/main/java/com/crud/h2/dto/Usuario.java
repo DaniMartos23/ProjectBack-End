@@ -2,16 +2,26 @@ package com.crud.h2.dto;
 
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="usuarios")
+
+@Inheritance(strategy=InheritanceType.JOINED)
 public class Usuario {
 	
 	@Id
@@ -32,7 +42,9 @@ public class Usuario {
 	@Column(name = "contraseña")
 	private String contraseña;
 	
-
+	@OneToMany
+	@JoinColumn(name = "ID_usuario")
+	private List<Reserva> reservas;
 	
 
 	
@@ -54,7 +66,7 @@ public class Usuario {
 	 * @param ciudad
 	 * @param foto_perfil
 	 */
-	public Usuario(int id, String nombre, String apellidos, Date fecha, String correo, String ciudad, String foto_perfil) {
+	public Usuario(int id, String nombre, String apellidos, Date fecha, String correo, String ciudad, String foto_perfil,List<Reserva> reservas) {
 		//super();
 		this.id_usuario = id;
 		this.nombre = nombre;
@@ -62,6 +74,7 @@ public class Usuario {
 		this.correo=correo;
 		this.ciudad=ciudad;
 		this.fotoPerfil=foto_perfil;
+		this.reservas=reservas;
 	}
 	
 	
@@ -174,6 +187,16 @@ public class Usuario {
 	public void setFotoPerfil(String foto_perfil) {
 		this.fotoPerfil = foto_perfil;
 	}
+	
+	public void setReservas(List<Reserva> reservas) {
+		this.reservas = reservas;
+	}
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "reserva")
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
 
 	
 	//Metodo impresion de datos por consola
@@ -181,6 +204,7 @@ public class Usuario {
 	public String toString() {
 		return "Cliente [id=" + this.id_usuario + ", nombre=" + this.nombre 
 				+ ", apellidos=" + this.apellidos + ", fecha nacimiento=" + this.fecha_nacimiento
-				+ ", correo=" + this.correo +  ", ciudad=" + this.ciudad + ", foto de perfil=" + this.fotoPerfil +"]";
+				+ ", correo=" + this.correo +  ", ciudad=" + this.ciudad + ", foto de perfil=" 
+				+ this.fotoPerfil +", Reserva="+reservas+"]";
 	}
 }
