@@ -33,7 +33,7 @@ public class Chollo {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha_caducidad;
 	
-	@Column(name = "destino")
+	@Column(name = "titulo")
 	private String titulo;
 	
 	@Column(name = "precio")
@@ -60,7 +60,7 @@ public class Chollo {
 	
     @OneToMany
 	@JoinColumn(name = "ID_chollo")
-	private List<Chollo> chollos;
+	private List<Reserva> reservas;
 	
 	
 
@@ -206,13 +206,13 @@ public class Chollo {
 	}
 
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Chollo")
-	public List<Chollo> getchollos() {
-		return chollos;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chollo")
+	public List<Reserva> getReserva() {
+		return reservas;
 	}
 
-	public void setchollos(List<Chollo> chollos) {
-		this.chollos = chollos;
+	public void setReserva(List<Reserva> reservas) {
+		this.reservas = reservas;
 	}
 
 
