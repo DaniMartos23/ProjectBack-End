@@ -37,7 +37,7 @@ public class Vuelos {
 	
 	
 	@OneToMany
-	@JoinColumn(name = "ID_vuelo")
+	@JoinColumn(name = "Id_Vuelos")
 	private List<Viajes> Viaje;
 	
 	//contructores
