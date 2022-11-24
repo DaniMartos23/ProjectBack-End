@@ -59,7 +59,7 @@ public class administradores extends Usuario{
 	
 
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chollo")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "administradores")
 	public List<Chollo> getChollo() {
 		return chollos;
 	}
