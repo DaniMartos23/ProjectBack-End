@@ -28,11 +28,11 @@ public class Viajes {
 	private Hotel Hotel;
 	
 	@ManyToOne
-	@JoinColumn(name = "Id_Vuelos")
+	@JoinColumn(name = "ID_vuelo")
 	private Vuelos Vuelos;
 	
 	@OneToMany
-	@JoinColumn(name = "ID_Viajes")
+	@JoinColumn(name = "ID_viaje")
 	private List<Chollo> chollos;
 	
 	

@@ -22,23 +22,23 @@ public class ViajesController {
 	@Autowired
 	ViajesServiceImpl ViajesService;
 	
-	@GetMapping("/Viajes")
+	@GetMapping("/viajes")
 	public List<Viajes> listaViajes(){
 		return ViajesService.listaViajes();
 	}
 	
-	@PostMapping("/Viajes/add")
+	@PostMapping("/viajes/add")
 	public Viajes addViajes(@RequestBody Viajes viaje) {
 		return ViajesService.addViajes(viaje);
 	}
 	
-	@GetMapping("/Viajes/{id}")
+	@GetMapping("/viajes/{id}")
 	public Viajes getViajesById(@PathVariable(name = "id") int id) {
 
 		return ViajesService.getViajesById(id);
 	}
 
-	@PutMapping("/Viajes{id}")
+	@PutMapping("/viajes{id}")
 	public Viajes updateViajes(@PathVariable(name = "id") int id, @RequestBody Viajes viaje) {
 		System.out.println(viaje);
 		Viajes viaje_seleccionado = new Viajes ();
@@ -54,7 +54,7 @@ public class ViajesController {
 		return viaje_actualizado;
 	}
 
-	@DeleteMapping("/Viajes/{id}")
+	@DeleteMapping("/viajes/{id}")
 	public void deleteViajes(@PathVariable(name = "id") int id) {
 		ViajesService.deleteViajes(id);
 	}
