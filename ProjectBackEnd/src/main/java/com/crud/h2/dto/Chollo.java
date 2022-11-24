@@ -51,7 +51,7 @@ public class Chollo {
 
 
     @ManyToOne
-    @JoinColumn(name = "ID_admin")
+    @JoinColumn(name = "ID_usuario")
     Admin admin;
 	
 
