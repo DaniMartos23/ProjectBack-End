@@ -1,8 +1,14 @@
 package com.crud.h2.service;
 
+import static java.util.Collections.emptyList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.crud.h2.dao.IUsuarioDAO;
@@ -10,7 +16,7 @@ import com.crud.h2.dto.Usuario;
 
 
 @Service
-public class UsuarioServiceImpl implements IUsuarioService{
+public class UsuarioServiceImpl implements IUsuarioService,UserDetailsService {
 	
 	
 	
@@ -45,7 +51,25 @@ public class UsuarioServiceImpl implements IUsuarioService{
 		@Override
 		public List<Usuario> listarUsuarioNombre(String nombre) {
 			
+			return iUsuarioDAO.findAllByNombre(nombre);
+		}
+		
+		@Override
+		public Usuario MostrarUsuarioPorNombre(String nombre) {
+			// TODO Auto-generated method stub
 			return iUsuarioDAO.findByNombre(nombre);
+		}
+		
+		
+		@Override
+		public UserDetails loadUserByUsername(String user) throws UsernameNotFoundException {
+			Usuario usuario =  iUsuarioDAO.findByNombre(user);
+			
+			if (usuario == null) {
+				throw new UsernameNotFoundException(user);
+			}
+			return new User(usuario.getNombre(), usuario.getContraseña(), emptyList());
+			
 		}
 		
 
