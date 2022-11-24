@@ -21,7 +21,7 @@ public class administradores extends Usuario{
 	private String empresa;
 	
 	@OneToMany
-	@JoinColumn(name = "ID_chollo")
+	@JoinColumn(name = "ID_usuario")
 	private List<Chollo> chollos;
 	
 	
