@@ -61,8 +61,8 @@ public class VuelosController {
 		return Vuelo_actualizado;
 	}
 
-	@DeleteMapping("/vuelos/{ID_vuelos}")
-	public void deleteVuelos(@PathVariable(name = "ID_vuelos") int id) {
+	@DeleteMapping("/vuelos/{id}")
+	public void deleteVuelos(@PathVariable(name = "id") int id) {
 		VuelosService.deleteVuelos(id);
 	}
 }

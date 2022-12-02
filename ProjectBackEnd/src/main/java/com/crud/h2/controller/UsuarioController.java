@@ -73,20 +73,15 @@ public class UsuarioController {
 	}
 	
 	
-	@GetMapping("/usuarios/{ID_usuario}")
-	public Usuario UsuarioXID(@PathVariable(name="ID_usuario") int id) {
+	@GetMapping("/usuarios/{id}")
+	public Usuario UsuarioXID(@PathVariable(name="id") int id) {
 		
-		Usuario usuario_xid= new Usuario();
+		return usuarioServiceImpl.usuarioXID(id);
 		
-		usuario_xid= usuarioServiceImpl.usuarioXID(id);
-		
-		System.out.println("Usuario XID: "+usuario_xid);
-		
-		return usuario_xid;
 	}
 	
-	@PutMapping("/usuarios/{ID_usuario}")
-	public Usuario actualizarUsuario(@PathVariable(name="ID_usuario")int id,@RequestBody Usuario usuario) {
+	@PutMapping("/usuarios/{id}")
+	public Usuario actualizarUsuario(@PathVariable(name="id")int id,@RequestBody Usuario usuario) {
 		
 		Usuario usuario_seleccionado= new Usuario();
 		Usuario usuario_actualizado= new Usuario();
@@ -108,8 +103,8 @@ public class UsuarioController {
 		return usuario_actualizado;
 	}
 	
-	@DeleteMapping("/usuarios/{ID_usuario}")
-	public void eleiminarUsuario(@PathVariable(name="ID_usuario")int id) {
+	@DeleteMapping("/usuarios/{id}")
+	public void eleiminarUsuario(@PathVariable(name="id")int id) {
 		usuarioServiceImpl.eliminarUsuario(id);
 	}
 	
