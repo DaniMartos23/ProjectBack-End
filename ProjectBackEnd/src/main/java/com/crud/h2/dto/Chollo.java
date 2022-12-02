@@ -3,6 +3,7 @@ package com.crud.h2.dto;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,22 +30,16 @@ public class Chollo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
 	private int ID_chollo;	
 		
-
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date fecha_caducidad;
-	
+	private Date fecha_caducidad;	
 	@Column(name = "titulo")
 	private String titulo;
-	
 	@Column(name = "precio")
 	private int precio;
-
 	@Column(name = "descripcion")
 	private String descripcion;
-
 	@Column(name = "valoracion")
-	private int valoracion;
-	
+	private int valoracion;	
 	@Column(name = "unidades")
 	private int unidades;
 	
@@ -53,13 +48,12 @@ public class Chollo {
     @JoinColumn(name = "ID_viaje")
 	Viajes viajes;
 
-
     @ManyToOne
     @JoinColumn(name = "ID_usuario")
     Administradores administradores;
 	
-    @OneToMany
-	@JoinColumn(name = "ID_chollo")
+	@OneToMany(mappedBy= "chollo", cascade=CascadeType.ALL,  orphanRemoval = true)
+	//@JoinColumn(name = "ID_chollo")
 	private List<Reserva> reservas;
 	
 	
@@ -206,7 +200,7 @@ public class Chollo {
 	}
 
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chollo")
+	@OneToMany(fetch = FetchType.LAZY)
 	public List<Reserva> getReserva() {
 		return reservas;
 	}

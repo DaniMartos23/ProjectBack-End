@@ -3,6 +3,7 @@ package com.crud.h2.dto;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,8 +21,8 @@ public class Administradores extends Usuario{
 	@Column(name = "empresa")
 	private String empresa;
 	
-	@OneToMany
-	@JoinColumn(name = "ID_usuario")
+	@OneToMany(mappedBy = "administradores", cascade=CascadeType.ALL,  orphanRemoval = true)
+	//@JoinColumn(name = "ID_usuario")
 	private List<Chollo> chollos;
 	
 	
@@ -59,7 +60,7 @@ public class Administradores extends Usuario{
 	
 
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "administradores")
+	@OneToMany(fetch = FetchType.LAZY)
 	public List<Chollo> getChollo() {
 		return chollos;
 	}
@@ -180,7 +181,7 @@ public class Administradores extends Usuario{
 	}
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "reserva")
+	@OneToMany(fetch = FetchType.LAZY)
 	public List<Reserva> getReservas() {
 		return super.getReservas();
 	}

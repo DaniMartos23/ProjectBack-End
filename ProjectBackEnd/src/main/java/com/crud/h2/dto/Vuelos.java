@@ -2,6 +2,7 @@ package com.crud.h2.dto;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,8 +37,8 @@ public class Vuelos {
 	private String destino;   
 	
 	
-	@OneToMany
-	@JoinColumn(name = "ID_vuelos")
+	@OneToMany(mappedBy = "vuelos", cascade=CascadeType.ALL,  orphanRemoval = true)
+	//@JoinColumn(name = "ID_vuelos")
 	private List<Viajes> Viaje;
 	
 	//contructores
@@ -135,7 +136,7 @@ public class Vuelos {
 		this.destino = destino;
 	}
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "viajes")
+	@OneToMany(fetch = FetchType.LAZY)
 	public List<Viajes> getViaje() {
 		return Viaje;
 	}
