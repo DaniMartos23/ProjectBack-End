@@ -56,6 +56,7 @@ public class CholloController {
 		chollo_seleccionado.setUnidades(chollo.getUnidades());
 		chollo_seleccionado.setValoracion(chollo.getValoracion());
 		chollo_seleccionado.setViajes(chollo.getViajes());
+		chollo_seleccionado.setImage_url(chollo.getImage_url());
 		
 		chollo_seleccionado.setAdministradores(chollo.getAdministradores());
 

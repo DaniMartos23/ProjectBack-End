@@ -42,6 +42,8 @@ public class Chollo {
 	private int valoracion;	
 	@Column(name = "unidades")
 	private int unidades;
+	@Column(name = "image_url")
+	private String image_url;
 	
 
 	@ManyToOne
@@ -63,7 +65,7 @@ public class Chollo {
 
 
 	public Chollo(int iD_chollo, Date fecha_caducidad, String titulo, int precio, String descripcion, int valoracion,
-			int unidades, Viajes viajes, Administradores administradores) {
+			int unidades, Viajes viajes,String image_url, Administradores administradores) {
 		
 		ID_chollo = iD_chollo;
 		this.fecha_caducidad = fecha_caducidad;
@@ -74,6 +76,7 @@ public class Chollo {
 		this.unidades = unidades;
 		this.viajes = viajes;
 		this.administradores = administradores;
+		this.image_url = image_url;
 	}
  
 	
@@ -192,6 +195,30 @@ public class Chollo {
 		return viajes;
 	}
 
+
+
+
+	public Date getFecha_caducidad() {
+		return fecha_caducidad;
+	}
+
+
+
+	public void setFecha_caducidad(Date fecha_caducidad) {
+		this.fecha_caducidad = fecha_caducidad;
+	}
+
+
+
+	public String getImage_url() {
+		return image_url;
+	}
+
+
+
+	public void setImage_url(String image_url) {
+		this.image_url = image_url;
+	}
 
 
 
