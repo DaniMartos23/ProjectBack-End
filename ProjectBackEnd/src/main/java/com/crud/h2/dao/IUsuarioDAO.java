@@ -11,5 +11,7 @@ public interface IUsuarioDAO extends JpaRepository<Usuario, Integer>{
 		public List<Usuario> findAllByNombre(String nombre);
 		
 		Usuario findByNombre(String username);
+		
+		Usuario findByUsuario(String username);
 
 }
