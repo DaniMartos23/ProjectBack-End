@@ -35,8 +35,8 @@ public class Administradores extends Usuario{
 
 	
 	
-	public Administradores(int id, String nombre, String apellidos, Date fecha, String correo, String ciudad, String foto_perfil,List<Reserva> reservas, String empresa, List<Chollo> chollo ) {
-		super(id,nombre,apellidos,fecha,correo,ciudad,foto_perfil,reservas);
+	public Administradores(int id, String nombre,String usuario, String apellidos, Date fecha, String correo, String ciudad, String foto_perfil,List<Reserva> reservas, String empresa, List<Chollo> chollo ) {
+		super(id,usuario,nombre,apellidos,fecha,correo,ciudad,foto_perfil,reservas);
 		this.empresa = empresa;
 		this.chollos = chollo;
 	}

@@ -47,6 +47,7 @@ public class AdministradoresController {
 		
 		Administradores_seleccionado = AdministradoresService.getAdministradoresById(id);
 		Administradores_seleccionado.setNombre(Administradores.getNombre());
+		Administradores_seleccionado.setUsuario(Administradores.getUsuario());
 		Administradores_seleccionado.setApellido(Administradores.getApellidos());
 		Administradores_seleccionado.setFechaNacimiento(Administradores.getFechaNacimiento());
 		Administradores_seleccionado.setCorreo(Administradores.getCorreo());

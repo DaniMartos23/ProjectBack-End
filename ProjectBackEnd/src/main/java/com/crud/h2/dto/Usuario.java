@@ -28,8 +28,12 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_usuario;
+	@Column(name = "usuario")
+	private String usuario;
+	
 	@Column(name = "nombre")
 	private String nombre;
+	
 	@Column(name = "apellidos")
 	private String apellidos;
 	@Column(name = "fecha_nacimiento")
@@ -49,9 +53,9 @@ public class Usuario {
 	
 
 	
-	public Usuario(String nombre, String contraseña) {
+	public Usuario(String usuario, String contraseña) {
 		this.contraseña = contraseña;
-		this.nombre = nombre;
+		this.usuario = usuario;
 	}
 	
 	//
@@ -67,9 +71,10 @@ public class Usuario {
 	 * @param ciudad
 	 * @param foto_perfil
 	 */
-	public Usuario(int id, String nombre, String apellidos, Date fecha, String correo, String ciudad, String foto_perfil,List<Reserva> reservas) {
+	public Usuario(int id, String nombre,String usuario, String apellidos, Date fecha, String correo, String ciudad, String foto_perfil,List<Reserva> reservas) {
 		//super();
 		this.id_usuario = id;
+		this.usuario = usuario;
 		this.nombre = nombre;
 		this.fecha_nacimiento=fecha;
 		this.correo=correo;
@@ -81,6 +86,14 @@ public class Usuario {
 	
 	//Getters y Setters
 	
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
 	/**
 	* @return id_usuario
 	*/

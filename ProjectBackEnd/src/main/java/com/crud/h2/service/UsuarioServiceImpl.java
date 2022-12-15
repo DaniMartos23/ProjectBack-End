@@ -22,6 +22,7 @@ public class UsuarioServiceImpl implements IUsuarioService,UserDetailsService {
 	
 		@Autowired
 		IUsuarioDAO iUsuarioDAO;
+		
 		@Override
 		public List<Usuario> listarUsuarios() {
 			
@@ -63,12 +64,12 @@ public class UsuarioServiceImpl implements IUsuarioService,UserDetailsService {
 		
 		@Override
 		public UserDetails loadUserByUsername(String user) throws UsernameNotFoundException {
-			Usuario usuario =  iUsuarioDAO.findByNombre(user);
+			Usuario usuario =  iUsuarioDAO.findByUsuario(user);
 			
 			if (usuario == null) {
 				throw new UsernameNotFoundException(user);
 			}
-			return new User(usuario.getNombre(), usuario.getContraseña(), emptyList());
+			return new User(usuario.getUsuario(), usuario.getContraseña(), emptyList());
 			
 		}
 		

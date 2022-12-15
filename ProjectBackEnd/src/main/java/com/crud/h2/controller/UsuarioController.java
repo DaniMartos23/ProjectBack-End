@@ -22,11 +22,6 @@ import com.crud.h2.dto.Usuario;
 import com.crud.h2.service.UsuarioServiceImpl;
 
 
-
-
-
-
-
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
@@ -35,6 +30,7 @@ public class UsuarioController {
 	@Autowired
 	UsuarioServiceImpl usuarioServiceImpl;
 	
+
 	private IUsuarioDAO iUsuarioDAO;
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -68,7 +64,8 @@ public class UsuarioController {
 	
 	
 	@PostMapping("/usuarios")
-	public Usuario salvarUsuario( @RequestBody Usuario usuario) {
+	public Usuario salvarUsuario(@RequestBody Usuario usuario) {
+		usuario.setContraseña(bCryptPasswordEncoder.encode(usuario.getContraseña()));
 		return usuarioServiceImpl.guardarUsuario(usuario);
 	}
 	
