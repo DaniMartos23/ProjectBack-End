@@ -14,6 +14,9 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -47,9 +50,16 @@ public class Usuario {
 	@Column(name = "contraseña")
 	private String contraseña;
 	
+
+	@OneToMany(mappedBy= "usuarios", cascade=CascadeType.ALL,  orphanRemoval = true)
+	private List<UserRoles> roles;
+
+	
 	@OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL,  orphanRemoval = true)
 	//@JoinColumn(name = "ID_usuario")
 	private List<Reserva> reservas;
+	
+	
 	
 
 	
@@ -71,16 +81,18 @@ public class Usuario {
 	 * @param ciudad
 	 * @param foto_perfil
 	 */
-	public Usuario(int id, String nombre,String usuario, String apellidos, Date fecha, String correo, String ciudad, String foto_perfil,List<Reserva> reservas) {
-		//super();
-		this.id_usuario = id;
+
+	public Usuario(int id_usuario, String usuario, String nombre, String apellidos, Date fecha_nacimiento,
+			String correo, String ciudad, String fotoPerfil, String contraseña) {
+		this.id_usuario = id_usuario;
 		this.usuario = usuario;
 		this.nombre = nombre;
-		this.fecha_nacimiento=fecha;
-		this.correo=correo;
-		this.ciudad=ciudad;
-		this.fotoPerfil=foto_perfil;
-		this.reservas=reservas;
+		this.apellidos = apellidos;
+		this.fecha_nacimiento = fecha_nacimiento;
+		this.correo = correo;
+		this.ciudad = ciudad;
+		this.fotoPerfil = fotoPerfil;
+		this.contraseña = contraseña;
 	}
 	
 	
@@ -206,6 +218,8 @@ public class Usuario {
 		this.reservas = reservas;
 	}
 	
+	
+
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY)
 	public List<Reserva> getReservas() {
@@ -213,12 +227,27 @@ public class Usuario {
 	}
 
 	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY)
+	public List<UserRoles> getUserRoles() {
+		return roles;
+	}
+
+	public void setUserRoles(List<UserRoles> roles) {
+		this.roles = roles;
+	}
+	
+
+
+	
+
+
 	//Metodo impresion de datos por consola
 	@Override
 	public String toString() {
-		return "Cliente [id=" + this.id_usuario + ", nombre=" + this.nombre 
-				+ ", apellidos=" + this.apellidos + ", fecha nacimiento=" + this.fecha_nacimiento
-				+ ", correo=" + this.correo +  ", ciudad=" + this.ciudad + ", foto de perfil=" 
-				+ this.fotoPerfil +", Reserva="+reservas+"]";
+		return "Usuario [id_usuario=" + id_usuario + ", usuario=" + usuario + ", nombre=" + nombre + ", apellidos="
+				+ apellidos + ", fecha_nacimiento=" + fecha_nacimiento + ", correo=" + correo + ", ciudad=" + ciudad
+				+ ", fotoPerfil=" + fotoPerfil + ", contraseña=" + contraseña + ", roles=" + roles + ", reservas="
+				+ reservas + "]";
 	}
 }
