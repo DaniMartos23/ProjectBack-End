@@ -50,9 +50,9 @@ public class Usuario {
 	@Column(name = "contraseña")
 	private String contraseña;
 	
-	@ManyToOne
-	@JoinColumn(name= "roles")
-	private UserRoles roles;
+
+	@OneToMany(mappedBy= "usuarios", cascade=CascadeType.ALL,  orphanRemoval = true)
+	private List<UserRoles> roles;
 
 	
 	@OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL,  orphanRemoval = true)
@@ -83,7 +83,7 @@ public class Usuario {
 	 */
 
 	public Usuario(int id_usuario, String usuario, String nombre, String apellidos, Date fecha_nacimiento,
-			String correo, String ciudad, String fotoPerfil, String contraseña, UserRoles roles) {
+			String correo, String ciudad, String fotoPerfil, String contraseña) {
 		this.id_usuario = id_usuario;
 		this.usuario = usuario;
 		this.nombre = nombre;
@@ -93,7 +93,6 @@ public class Usuario {
 		this.ciudad = ciudad;
 		this.fotoPerfil = fotoPerfil;
 		this.contraseña = contraseña;
-		this.roles = roles;
 	}
 	
 	
@@ -228,17 +227,17 @@ public class Usuario {
 	}
 
 	
-	public UserRoles getUserRoles() {
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY)
+	public List<UserRoles> getUserRoles() {
 		return roles;
 	}
 
-	public void setUserRoles(UserRoles roles) {
+	public void setUserRoles(List<UserRoles> roles) {
 		this.roles = roles;
 	}
 	
-	public List<Role> getRoles() {
-		return this.roles.getRoles();
-	}
+
 
 	
 

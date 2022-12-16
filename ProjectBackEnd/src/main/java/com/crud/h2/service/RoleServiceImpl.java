@@ -1,9 +1,11 @@
 package com.crud.h2.service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.crud.h2.dao.IRoleDAO;
 import com.crud.h2.dto.Role;
 
+@Service
 public class RoleServiceImpl implements IRoleService {
 
 	@Autowired

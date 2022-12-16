@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -15,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-@Table(name = "Userroles")
+@Table(name = "userroles")
 
 public class UserRoles {
 
@@ -23,15 +25,22 @@ public class UserRoles {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
 	private int ID;	
 	
-	@OneToMany(mappedBy= "Userroles", cascade=CascadeType.ALL,  orphanRemoval = true)
-	private List<Usuario> usuarios;
-	
-	@OneToMany(mappedBy= "Userroles", cascade=CascadeType.ALL,  orphanRemoval = true)
-	private List<Role> roles;
+	@ManyToOne
+    @JoinColumn(name = "usuarios")
+	private Usuario usuarios;
 	
 	
-	public UserRoles(int ID) {
+	@ManyToOne
+    @JoinColumn(name = "id_roles")
+	private Role id_roles;
+	
+	public UserRoles() {
+	}
+	
+	public UserRoles(int ID, Usuario usuarios,Role role) {
 		this.ID = ID;
+		this.usuarios=usuarios;
+		this.id_roles=role;
 	}
 	
 	
@@ -48,24 +57,27 @@ public class UserRoles {
 
 
 
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY)
-	public List<Usuario> getUsuario() {
+	public Usuario getUsuario() {
 		return usuarios;
 	}
 
-	public void setUsuario(List<Usuario> usuarios) {
+	public void setUsuario(Usuario usuarios) {
 		this.usuarios = usuarios;
 	}
 	
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY)
-	public List<Role> getRoles() {
-		return roles;
+	public Role getRoles() {
+		return id_roles;
 	}
 
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
+	public void setRoles(Role roles) {
+		this.id_roles = roles;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "UserRoles [ID=" + ID + ", usuarios=" + usuarios + ", id_role=" + id_roles + "]";
 	}
 
 	

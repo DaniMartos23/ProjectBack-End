@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.crud.h2.dao.IUsuarioDAO;
 import com.crud.h2.dto.Usuario;
+import com.crud.h2.service.RoleServiceImpl;
+import com.crud.h2.service.UserRolesServiceImpl;
 import com.crud.h2.service.UsuarioServiceImpl;
 
 
@@ -30,12 +32,18 @@ public class UsuarioController {
 	@Autowired
 	UsuarioServiceImpl usuarioServiceImpl;
 	
+	@Autowired
+	RoleServiceImpl roleServiceImpl;
+	
+	@Autowired
+	UserRolesServiceImpl userrolesServiceImpl;
+	
+	private IUsuarioDAO iusuarioDAO;
 
-	private IUsuarioDAO iUsuarioDAO;
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	public UsuarioController(IUsuarioDAO iUsuarioDAO, BCryptPasswordEncoder bCryptPasswordEncoder) {
-		this.iUsuarioDAO = iUsuarioDAO;
+	public UsuarioController(IUsuarioDAO iusuarioDAO, BCryptPasswordEncoder bCryptPasswordEncoder) {
+		this.iusuarioDAO=iusuarioDAO;
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
 	

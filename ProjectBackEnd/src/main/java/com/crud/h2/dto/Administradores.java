@@ -36,7 +36,7 @@ public class Administradores extends Usuario{
 	
 	public Administradores(int id, String usuario, String nombre, String apellidos, Date fecha_nacimiento,
 			String correo, String ciudad, String fotoPerfil, String contraseña, UserRoles roles,String empresa ) {
-		super(id,usuario,nombre,apellidos,fecha_nacimiento,correo,ciudad,fotoPerfil,contraseña,roles);
+		super(id,usuario,nombre,apellidos,fecha_nacimiento,correo,ciudad,fotoPerfil,contraseña);
 		this.empresa = empresa;
 	}
 
@@ -183,6 +183,17 @@ public class Administradores extends Usuario{
 	@OneToMany(fetch = FetchType.LAZY)
 	public List<Reserva> getReservas() {
 		return super.getReservas();
+	}
+	
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY)
+	public List<UserRoles> getUserRoles() {
+		return super.getUserRoles();
+	}
+
+	public void setUserRoles(List<UserRoles> roles) {
+		super.setUserRoles(roles);
 	}
 
 	//toString

@@ -17,6 +17,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
@@ -50,8 +51,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		httpSecurity.authorizeRequests().antMatchers(HttpMethod.GET, "/api/chollos","/api/hoteles","/api/viajes","/api/vuelos" ).permitAll();
 		
 		httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST,"/api/usuarios","/api/administradores").hasRole("ADMIN");
-		httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST,"/api/usuarios").hasRole("USER");
-		httpSecurity.authorizeRequests().antMatchers(HttpMethod.GET, "/api/chollos","/api/hoteles","/api/viajes","/api/vuelos" ).hasRole("ADMIN")
+		//httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST,"/api/reservas/usuarios","/api/usuarios/personal").hasRole("USER");
+		httpSecurity.authorizeRequests().antMatchers(HttpMethod.GET, "/api/usuarios").hasRole("ADMIN");
+		httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST, "/api/chollos","/api/hoteles","/api/viajes","/api/vuelos" ).hasRole("ADMIN")
 			.anyRequest().authenticated().and()
 				.addFilter(new JWTAuthenticationFilter(authenticationManager()))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager()));
