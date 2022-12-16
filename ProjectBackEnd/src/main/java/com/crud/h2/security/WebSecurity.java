@@ -1,6 +1,7 @@
 package com.crud.h2.security;
 
 import static com.crud.h2.security.Constants.LOGIN_URL;
+import static com.crud.h2.security.Constants.REGISTER_URL;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,7 +45,13 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.cors().and()
 			.csrf().disable()
-			.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()
+			.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL,REGISTER_URL).permitAll();
+		
+		httpSecurity.authorizeRequests().antMatchers(HttpMethod.GET, "/api/chollos","/api/hoteles","/api/viajes","/api/vuelos" ).permitAll();
+		
+		httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST,"/api/usuarios","/api/administradores").hasRole("ADMIN");
+		httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST,"/api/usuarios").hasRole("USER");
+		httpSecurity.authorizeRequests().antMatchers(HttpMethod.GET, "/api/chollos","/api/hoteles","/api/viajes","/api/vuelos" ).hasRole("ADMIN")
 			.anyRequest().authenticated().and()
 				.addFilter(new JWTAuthenticationFilter(authenticationManager()))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager()));

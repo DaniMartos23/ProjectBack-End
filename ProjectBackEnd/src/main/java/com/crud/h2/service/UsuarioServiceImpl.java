@@ -1,15 +1,19 @@
 package com.crud.h2.service;
 
-import static java.util.Collections.emptyList;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import com.crud.h2.dao.IUsuarioDAO;
 import com.crud.h2.dto.Usuario;
@@ -19,9 +23,13 @@ import com.crud.h2.dto.Usuario;
 public class UsuarioServiceImpl implements IUsuarioService,UserDetailsService {
 	
 	
-	
 		@Autowired
 		IUsuarioDAO iUsuarioDAO;
+		
+		@Autowired
+		private BCryptPasswordEncoder bcryptEncoder;
+
+		
 		
 		@Override
 		public List<Usuario> listarUsuarios() {
@@ -69,9 +77,17 @@ public class UsuarioServiceImpl implements IUsuarioService,UserDetailsService {
 			if (usuario == null) {
 				throw new UsernameNotFoundException(user);
 			}
-			return new User(usuario.getUsuario(), usuario.getContraseña(), emptyList());
+			return new User(usuario.getUsuario(), usuario.getContraseña(), this.getAuthority(usuario));
 			
 		}
+		
+		private Set<SimpleGrantedAuthority> getAuthority(Usuario user) {
+	        Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+	        user.getRoles().forEach(role -> {
+	            authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName()));
+	        });
+	        return authorities;
+	    }
 		
 
 

@@ -7,7 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -35,10 +34,10 @@ public class Administradores extends Usuario{
 
 	
 	
-	public Administradores(int id, String nombre,String usuario, String apellidos, Date fecha, String correo, String ciudad, String foto_perfil,List<Reserva> reservas, String empresa, List<Chollo> chollo ) {
-		super(id,usuario,nombre,apellidos,fecha,correo,ciudad,foto_perfil,reservas);
+	public Administradores(int id, String usuario, String nombre, String apellidos, Date fecha_nacimiento,
+			String correo, String ciudad, String fotoPerfil, String contraseña, UserRoles roles,String empresa ) {
+		super(id,usuario,nombre,apellidos,fecha_nacimiento,correo,ciudad,fotoPerfil,contraseña,roles);
 		this.empresa = empresa;
-		this.chollos = chollo;
 	}
 
 
