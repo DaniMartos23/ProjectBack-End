@@ -92,6 +92,11 @@ public class UsuarioServiceImpl implements IUsuarioService,UserDetailsService {
 	        });
 	        return authorities;
 	    }
+		@Override
+		public Usuario MostrarUsuarioPorUsuario(String usuario) {
+			// TODO Auto-generated method stub
+			 return iUsuarioDAO.findByUsuario(usuario);
+		}
 		
 
 

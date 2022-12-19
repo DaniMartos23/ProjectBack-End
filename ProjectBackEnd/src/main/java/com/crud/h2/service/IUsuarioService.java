@@ -21,6 +21,8 @@ public interface IUsuarioService {
 	
 	public Usuario MostrarUsuarioPorNombre(String nombre); 
 	
+	public Usuario MostrarUsuarioPorUsuario(String usuario); 
+	
 	public void eliminarUsuario(int id);
 	
 	

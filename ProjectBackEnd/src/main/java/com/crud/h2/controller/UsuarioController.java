@@ -71,6 +71,7 @@ public class UsuarioController {
 	}
 	
 	
+	
 	@PostMapping("/usuarios/register")
 	public Usuario salvarUsuario(@RequestBody Usuario usuario) {
 		usuario.setContraseña(bCryptPasswordEncoder.encode(usuario.getContraseña()));
@@ -82,6 +83,13 @@ public class UsuarioController {
 	public Usuario UsuarioXID(@PathVariable(name="id") int id) {
 		
 		return usuarioServiceImpl.usuarioXID(id);
+		
+	}
+	
+	@GetMapping("/usuarios/{usuario}")
+	public Usuario UsuarioXUser(@PathVariable(name="usuario") String usuario) {
+		
+		return usuarioServiceImpl.MostrarUsuarioPorUsuario(usuario);
 		
 	}
 	
