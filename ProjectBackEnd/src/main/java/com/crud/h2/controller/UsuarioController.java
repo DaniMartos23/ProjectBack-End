@@ -109,7 +109,7 @@ public class UsuarioController {
 		
 	}
 	
-	@GetMapping("/usuarios/{usuario}")
+	@GetMapping("/usuarios/perfil/{usuario}")
 	public Usuario UsuarioXUser(@PathVariable(name="usuario") String usuario) {
 		return usuarioServiceImpl.MostrarUsuarioPorUsuario(usuario);
 		
