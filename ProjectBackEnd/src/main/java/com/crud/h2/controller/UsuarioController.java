@@ -1,5 +1,6 @@
 package com.crud.h2.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.crud.h2.dao.IUsuarioDAO;
+import com.crud.h2.dto.Reserva;
+import com.crud.h2.dto.Role;
+import com.crud.h2.dto.UserRoles;
 import com.crud.h2.dto.Usuario;
 import com.crud.h2.service.RoleServiceImpl;
 import com.crud.h2.service.UserRolesServiceImpl;
@@ -75,8 +79,28 @@ public class UsuarioController {
 	@PostMapping("/usuarios/register")
 	public Usuario salvarUsuario(@RequestBody Usuario usuario) {
 		usuario.setContraseña(bCryptPasswordEncoder.encode(usuario.getContraseña()));
-		return usuarioServiceImpl.guardarUsuario(usuario);
+		if(usuario.getUserRoles()==null) {
+			Role roles=roleServiceImpl.findByName("USER");
+			usuario=usuarioServiceImpl.guardarUsuario(usuario);
+			UserRoles uroles=new UserRoles();
+			uroles.setRoles(roles);
+			uroles.setUsuario(usuario);
+			uroles=userrolesServiceImpl.guardaUsuarioRol(uroles);
+			List<UserRoles> listaroles=new ArrayList<UserRoles>();
+			listaroles.add(uroles);
+			usuario.setUserRoles(listaroles);
+		}
+		return usuario;
 	}
+	
+	@GetMapping("/usuarios/reservas/{id}")
+	public List<Reserva> UsuarioReserva(@PathVariable(name="id") int id) {
+		
+		Usuario usuario =usuarioServiceImpl.usuarioXID(id);
+		return usuario.getReservas();
+		
+	}
+	
 	
 	
 	@GetMapping("/usuarios/{id}")
