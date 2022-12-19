@@ -93,11 +93,23 @@ public class UsuarioController {
 		return usuario;
 	}
 	
+	/*
 	@GetMapping("/usuarios/reservas/{id}")
 	public List<Reserva> UsuarioReserva(@PathVariable(name="id") int id) {
 		
 		Usuario usuario = usuarioServiceImpl.usuarioXID(id);
 		return usuario.getReservas();
+		
+	}
+	
+	*/
+	
+	@GetMapping("/usuarios/reservas/{usuario}")
+	public List<Reserva> UsuarioReserva(@PathVariable(name="usuario") String usuario) {
+		
+		Usuario usuarioBD = usuarioServiceImpl.MostrarUsuarioPorUsuario(usuario);
+		//Usuario usuario = usuarioServiceImpl.usuarioXID(id);
+		return usuarioBD.getReservas();
 		
 	}
 	
