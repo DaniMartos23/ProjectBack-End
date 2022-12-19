@@ -123,13 +123,14 @@ public class UsuarioController {
 		
 		usuario_seleccionado= usuarioServiceImpl.MostrarUsuarioPorUsuario(usuario);
 		
+		usuario_seleccionado.setUsuario(usuarioBody.getUsuario());
 		usuario_seleccionado.setNombre(usuarioBody.getNombre());
 		usuario_seleccionado.setApellido(usuarioBody.getApellidos());
 		usuario_seleccionado.setFechaNacimiento(usuarioBody.getFechaNacimiento());
 		usuario_seleccionado.setCorreo(usuarioBody.getCorreo());
 		usuario_seleccionado.setCiudad(usuarioBody.getCiudad());
 		usuario_seleccionado.setFotoPerfil(usuarioBody.getFotoPerfil());
-		usuario_seleccionado.setReservas(usuarioBody.getReservas());
+
 		
 		usuario_actualizado = usuarioServiceImpl.actualizarUsuario(usuario_seleccionado);
 		
