@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.crud.h2.dao.IUsuarioDAO;
+import com.crud.h2.dto.Reserva;
 import com.crud.h2.dto.Role;
 import com.crud.h2.dto.UserRoles;
 import com.crud.h2.dto.Usuario;
@@ -90,6 +91,15 @@ public class UsuarioController {
 		}
 		return usuario;
 	}
+	
+	@GetMapping("/usuarios/reservas/{id}")
+	public List<Reserva> UsuarioReserva(@PathVariable(name="id") int id) {
+		
+		Usuario usuario =usuarioServiceImpl.usuarioXID(id);
+		return usuario.getReservas();
+		
+	}
+	
 	
 	
 	@GetMapping("/usuarios/{id}")
