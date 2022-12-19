@@ -115,21 +115,21 @@ public class UsuarioController {
 		
 	}
 	
-	@PutMapping("/usuarios/{id}")
-	public Usuario actualizarUsuario(@PathVariable(name="id")int id,@RequestBody Usuario usuario) {
+	@PutMapping("/usuarios/perfil/{usuario}")
+	public Usuario actualizarUsuario(@PathVariable(name="usuario")String usuario,@RequestBody Usuario usuarioBody) {
 		
 		Usuario usuario_seleccionado= new Usuario();
 		Usuario usuario_actualizado= new Usuario();
 		
-		usuario_seleccionado= usuarioServiceImpl.usuarioXID(id);
+		usuario_seleccionado= usuarioServiceImpl.MostrarUsuarioPorUsuario(usuario);
 		
-		usuario_seleccionado.setNombre(usuario.getNombre());
-		usuario_seleccionado.setApellido(usuario.getApellidos());
-		usuario_seleccionado.setFechaNacimiento(usuario.getFechaNacimiento());
-		usuario_seleccionado.setCorreo(usuario.getCorreo());
-		usuario_seleccionado.setCiudad(usuario.getCiudad());
-		usuario_seleccionado.setFotoPerfil(usuario.getFotoPerfil());
-		usuario_seleccionado.setReservas(usuario.getReservas());
+		usuario_seleccionado.setNombre(usuarioBody.getNombre());
+		usuario_seleccionado.setApellido(usuarioBody.getApellidos());
+		usuario_seleccionado.setFechaNacimiento(usuarioBody.getFechaNacimiento());
+		usuario_seleccionado.setCorreo(usuarioBody.getCorreo());
+		usuario_seleccionado.setCiudad(usuarioBody.getCiudad());
+		usuario_seleccionado.setFotoPerfil(usuarioBody.getFotoPerfil());
+		usuario_seleccionado.setReservas(usuarioBody.getReservas());
 		
 		usuario_actualizado = usuarioServiceImpl.actualizarUsuario(usuario_seleccionado);
 		
