@@ -41,6 +41,11 @@ public class ReservaServiceImpl implements IReservaService{
 			iReservaDAO.deleteById(id);
 			
 		}
+		@Override
+		public List<Reserva> listarReservasUsuario(String usuario) {
+			// TODO Auto-generated method stub
+			return iReservaDAO.findAllByUsuario(usuario);
+		}
 		
 
 

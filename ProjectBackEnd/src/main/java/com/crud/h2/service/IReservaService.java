@@ -19,5 +19,7 @@ public interface IReservaService {
 	
 	public void eliminarReserva(int id);
 	
+	public List<Reserva> listarReservasUsuario (String usuario);
+	
 	
 }

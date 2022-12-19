@@ -29,6 +29,12 @@ public class ReservaController {
 		return reservaServiceImpl.listarReservas();
 	}
 	
+	@GetMapping("/reservas/usuario/{usuario}")
+	public List<Reserva> listarReservasUsuario(@PathVariable(name="usuario") String usuario){
+		return reservaServiceImpl.listarReservasUsuario(usuario);
+	}
+	
+	
 	
 	
 	@PostMapping("/reservas")
