@@ -50,7 +50,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		
 		httpSecurity.authorizeRequests().antMatchers(HttpMethod.GET, "/api/chollos","/api/hoteles","/api/viajes","/api/vuelos" ).permitAll();
 		
-		httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST,"/api/usuarios","/api/administradores").hasRole("ADMIN");
+		httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST,"/api/administradores").hasRole("ADMIN");
 		//httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST,"/api/reservas/usuarios","/api/usuarios/personal").hasRole("USER");
 		httpSecurity.authorizeRequests().antMatchers(HttpMethod.GET, "/api/usuarios").hasRole("ADMIN");
 		httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST, "/api/chollos","/api/hoteles","/api/viajes","/api/vuelos" ).hasRole("ADMIN")

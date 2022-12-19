@@ -71,7 +71,7 @@ public class UsuarioController {
 	}
 	
 	
-	@PostMapping("/usuarios")
+	@PostMapping("/usuarios/register")
 	public Usuario salvarUsuario(@RequestBody Usuario usuario) {
 		usuario.setContraseña(bCryptPasswordEncoder.encode(usuario.getContraseña()));
 		return usuarioServiceImpl.guardarUsuario(usuario);
