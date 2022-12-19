@@ -96,7 +96,7 @@ public class UsuarioController {
 	@GetMapping("/usuarios/reservas/{id}")
 	public List<Reserva> UsuarioReserva(@PathVariable(name="id") int id) {
 		
-		Usuario usuario =usuarioServiceImpl.usuarioXID(id);
+		Usuario usuario = usuarioServiceImpl.usuarioXID(id);
 		return usuario.getReservas();
 		
 	}
@@ -104,15 +104,13 @@ public class UsuarioController {
 	
 	
 	@GetMapping("/usuarios/{id}")
-	public Usuario UsuarioXID(@PathVariable(name="id") int id) {
-		
+	public Usuario UsuarioXID(@PathVariable(name="id") int id) {	
 		return usuarioServiceImpl.usuarioXID(id);
 		
 	}
 	
 	@GetMapping("/usuarios/{usuario}")
 	public Usuario UsuarioXUser(@PathVariable(name="usuario") String usuario) {
-		
 		return usuarioServiceImpl.MostrarUsuarioPorUsuario(usuario);
 		
 	}

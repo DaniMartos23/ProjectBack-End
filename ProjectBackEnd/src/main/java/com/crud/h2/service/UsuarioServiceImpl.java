@@ -70,6 +70,13 @@ public class UsuarioServiceImpl implements IUsuarioService,UserDetailsService {
 			return iUsuarioDAO.findByNombre(nombre);
 		}
 		
+		@Override
+		public Usuario MostrarUsuarioPorUsuario(String usuario) {
+			// TODO Auto-generated method stub
+			 return iUsuarioDAO.findByUsuario(usuario);
+		}
+		
+		
 		
 		@Override
 		public UserDetails loadUserByUsername(String user) throws UsernameNotFoundException {
@@ -92,12 +99,7 @@ public class UsuarioServiceImpl implements IUsuarioService,UserDetailsService {
 	        });
 	        return authorities;
 	    }
-		@Override
-		public Usuario MostrarUsuarioPorUsuario(String usuario) {
-			// TODO Auto-generated method stub
-			 return iUsuarioDAO.findByUsuario(usuario);
-		}
-		
+
 
 
 }
