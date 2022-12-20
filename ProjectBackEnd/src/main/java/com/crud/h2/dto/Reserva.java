@@ -18,7 +18,7 @@ public class Reserva {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
 	private int ID_reserva;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ID_usuario")
 	private Usuario usuario;
 	
