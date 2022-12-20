@@ -100,9 +100,11 @@ public class Usuario {
 	
 	
 	//Getters y Setters
+	@JsonIgnore
 	public String getUsuario() {
 		return usuario;
 	}
+	@JsonIgnore
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
