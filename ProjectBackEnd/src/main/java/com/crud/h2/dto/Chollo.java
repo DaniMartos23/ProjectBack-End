@@ -52,7 +52,7 @@ public class Chollo {
 
     @ManyToOne
     @JoinColumn(name = "ID_usuario")
-    Administradores administradores;
+    Usuario usuarios;
 	
 	@OneToMany(mappedBy= "chollo", cascade=CascadeType.ALL,  orphanRemoval = true)
 	//@JoinColumn(name = "ID_chollo")
@@ -65,7 +65,7 @@ public class Chollo {
 
 
 	public Chollo(int iD_chollo, Date fecha_caducidad, String titulo, int precio, String descripcion, int valoracion,
-			int unidades, Viajes viajes,String image_url, Administradores administradores) {
+			int unidades, Viajes viajes,String image_url, Usuario usuarios) {
 		
 		ID_chollo = iD_chollo;
 		this.fecha_caducidad = fecha_caducidad;
@@ -75,20 +75,20 @@ public class Chollo {
 		this.valoracion = valoracion;
 		this.unidades = unidades;
 		this.viajes = viajes;
-		this.administradores = administradores;
+		this.usuarios = usuarios;
 		this.image_url = image_url;
 	}
  
 	
 
-	public Administradores getAdministradores() {
-		return administradores;
+	public Usuario getUsuario() {
+		return usuarios;
 	}
 
 
 
-	public void setAdministradores(Administradores administradores) {
-		this.administradores = administradores;
+	public void setUsuario(Usuario usuarios) {
+		this.usuarios = usuarios;
 	}
 
 

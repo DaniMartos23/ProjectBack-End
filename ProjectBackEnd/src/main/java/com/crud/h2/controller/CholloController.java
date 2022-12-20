@@ -58,7 +58,7 @@ public class CholloController {
 		chollo_seleccionado.setViajes(chollo.getViajes());
 		chollo_seleccionado.setImage_url(chollo.getImage_url());
 		
-		chollo_seleccionado.setAdministradores(chollo.getAdministradores());
+		chollo_seleccionado.setUsuario(chollo.getUsuario());
 
 		chollo_actualizado = cholloService.updateChollo(chollo_seleccionado);
 

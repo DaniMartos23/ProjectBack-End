@@ -3,10 +3,13 @@ package com.crud.h2.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.crud.h2.dao.ICholloDAO;
 import com.crud.h2.dto.Chollo;
+
 
 @Service
 public class CholloSeviceImpl implements ICholloService {
@@ -18,7 +21,7 @@ public class CholloSeviceImpl implements ICholloService {
 	@Override
 	public List<Chollo> listaChollo() {
 		// TODO Auto-generated method stub
-		return iCholloDAO.findAll();
+		return iCholloDAO.findAll(Sort.by(Direction.ASC, "fecha_caducidad"));
 	}
 
 	@Override
