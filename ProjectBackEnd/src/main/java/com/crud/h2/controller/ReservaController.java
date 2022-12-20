@@ -41,7 +41,7 @@ public class ReservaController {
 	
 	
 	
-	@PostMapping("/reservas/post/usuario")
+	@PostMapping("/reservas/post/{usuario}")
 	public Reserva salvarReserva(@PathVariable(name="usuario") String usuario,@RequestBody Reserva reserva) {
 		
 		
