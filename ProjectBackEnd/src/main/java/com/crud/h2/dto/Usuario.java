@@ -59,6 +59,9 @@ public class Usuario {
 	//@JoinColumn(name = "ID_usuario")
 	private List<Reserva> reservas;
 	
+	@OneToMany(mappedBy = "usuarios", cascade=CascadeType.ALL,  orphanRemoval = true)
+	private List<Chollo> chollo;
+	
 	
 	
 
@@ -223,6 +226,17 @@ public class Usuario {
 	@JsonIgnore
 	public List<Reserva> getReservas() {
 		return reservas;
+	}
+	
+	public void setChollos(List<Chollo> chollo) {
+		this.chollo = chollo;
+	}
+	
+	
+
+	@JsonIgnore
+	public List<Chollo> getChollo() {
+		return chollo;
 	}
 
 	
