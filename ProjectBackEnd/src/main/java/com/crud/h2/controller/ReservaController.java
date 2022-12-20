@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.crud.h2.dto.Reserva;
+import com.crud.h2.dto.Usuario;
 import com.crud.h2.service.ReservaServiceImpl;
 import com.crud.h2.service.UsuarioServiceImpl;
 
@@ -42,10 +43,12 @@ public class ReservaController {
 	
 	
 	@PostMapping("/reservas/post/{usuario}")
-	public Reserva salvarReserva(@PathVariable(name="usuario") String usuario,@RequestBody Reserva reserva) {
+	public Reserva salvarReserva(@PathVariable(name="usuario") String usuarioReq,@RequestBody Reserva reserva) {
 		
+		Usuario a = usuarioServiceImpl.MostrarUsuarioPorUsuario(usuarioReq);
 		
-		reserva.setId(usuarioServiceImpl.MostrarUsuarioPorUsuario(usuario).getId());
+		reserva.setUsuario(a);
+		
 		return reservaServiceImpl.guardarReserva(reserva);
 	}
 	
