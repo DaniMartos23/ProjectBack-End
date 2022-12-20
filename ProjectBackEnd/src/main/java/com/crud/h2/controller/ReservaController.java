@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.crud.h2.dto.Reserva;
 import com.crud.h2.service.ReservaServiceImpl;
+import com.crud.h2.service.UsuarioServiceImpl;
 
 
 
@@ -23,6 +24,9 @@ public class ReservaController {
 	
 	@Autowired
 	ReservaServiceImpl reservaServiceImpl;
+	
+	@Autowired
+	UsuarioServiceImpl usuarioServiceImpl;
 	
 	@GetMapping("/reservas")
 	public List<Reserva> listarReservas(){
@@ -37,8 +41,11 @@ public class ReservaController {
 	
 	
 	
-	@PostMapping("/reservas")
-	public Reserva salvarReserva(@RequestBody Reserva reserva) {
+	@PostMapping("/reservas/post/usuario")
+	public Reserva salvarReserva(@PathVariable(name="usuario") String usuario,@RequestBody Reserva reserva) {
+		
+		
+		reserva.setId(usuarioServiceImpl.MostrarUsuarioPorUsuario(usuario).getId());
 		return reservaServiceImpl.guardarReserva(reserva);
 	}
 	
