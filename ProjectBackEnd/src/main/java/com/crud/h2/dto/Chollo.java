@@ -31,7 +31,7 @@ public class Chollo {
 	private int ID_chollo;	
 		
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date fecha_caducidad;	
+	private Date fechacaducidad;	
 	@Column(name = "titulo")
 	private String titulo;
 	@Column(name = "precio")
@@ -64,11 +64,11 @@ public class Chollo {
 
 
 
-	public Chollo(int iD_chollo, Date fecha_caducidad, String titulo, int precio, String descripcion, int valoracion,
+	public Chollo(int iD_chollo, Date fechacaducidad, String titulo, int precio, String descripcion, int valoracion,
 			int unidades, Viajes viajes,String image_url, Usuario usuarios) {
 		
 		ID_chollo = iD_chollo;
-		this.fecha_caducidad = fecha_caducidad;
+		this.fechacaducidad = fechacaducidad;
 		this.titulo = titulo;
 		this.precio = precio;
 		this.descripcion = descripcion;
@@ -108,14 +108,14 @@ public class Chollo {
 
 
 	public Date getFecha() {
-		return fecha_caducidad;
+		return fechacaducidad;
 	}
 
 
 
 
-	public void setFecha(Date fecha_caducidad) {
-		this.fecha_caducidad = fecha_caducidad;
+	public void setFecha(Date fechacaducidad) {
+		this.fechacaducidad = fechacaducidad;
 	}
 
 
@@ -194,20 +194,6 @@ public class Chollo {
 	public Viajes getViajes() {
 		return viajes;
 	}
-
-
-
-
-	public Date getFecha_caducidad() {
-		return fecha_caducidad;
-	}
-
-
-
-	public void setFecha_caducidad(Date fecha_caducidad) {
-		this.fecha_caducidad = fecha_caducidad;
-	}
-
 
 
 	public String getImage_url() {

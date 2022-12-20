@@ -21,7 +21,7 @@ public class CholloSeviceImpl implements ICholloService {
 	@Override
 	public List<Chollo> listaChollo() {
 		// TODO Auto-generated method stub
-		return iCholloDAO.findAll(Sort.by(Direction.ASC, "fecha_caducidad"));
+		return iCholloDAO.findAll(Sort.by(Direction.ASC, "fechacaducidad"));
 	}
 
 	@Override
