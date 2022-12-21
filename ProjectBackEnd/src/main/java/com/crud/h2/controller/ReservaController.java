@@ -50,6 +50,13 @@ public class ReservaController {
 		return reservaServiceImpl.guardarReserva(reserva);
 	}
 	
+	@PostMapping("/reservas/post/")
+	public Reserva salvarReserva(@RequestBody Reserva reserva) {
+
+		return reservaServiceImpl.guardarReserva(reserva);
+	}
+	
+	
 	
 	@GetMapping("/reservas/{id}")
 	public Reserva ReservaXID(@PathVariable(name="id") int id) {
