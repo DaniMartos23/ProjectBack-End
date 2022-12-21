@@ -223,6 +223,7 @@ public class Usuario {
 	
 
 	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY)
 	public List<Reserva> getReservas() {
 		return reservas;
 	}
