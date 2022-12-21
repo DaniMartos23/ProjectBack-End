@@ -38,7 +38,7 @@ public class ViajesController {
 		return ViajesService.getViajesById(id);
 	}
 
-	@PutMapping("/viajes{id}")
+	@PutMapping("/viajes/{id}")
 	public Viajes updateViajes(@PathVariable(name = "id") int id, @RequestBody Viajes viaje) {
 		System.out.println(viaje);
 		Viajes viaje_seleccionado = new Viajes ();
