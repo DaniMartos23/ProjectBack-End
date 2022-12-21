@@ -39,7 +39,7 @@ public class ReservaController {
 		return reservaServiceImpl.listarReservasUsuario(usuario);
 	}
 	
-	
+	/*
 	@PostMapping("/reservas/post/{usuario}")
 	public Reserva salvarReserva(@PathVariable(name="usuario") String usuarioReq,@RequestBody Reserva reserva) {
 		
@@ -48,9 +48,9 @@ public class ReservaController {
 		reserva.setUsuario(a);
 		
 		return reservaServiceImpl.guardarReserva(reserva);
-	}
+	}*/
 	
-	@PostMapping("/reservas/post/")
+	@PostMapping("/reservas/post")
 	public Reserva salvarReserva(@RequestBody Reserva reserva) {
 
 		return reservaServiceImpl.guardarReserva(reserva);
