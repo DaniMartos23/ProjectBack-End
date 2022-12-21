@@ -49,7 +49,7 @@ public class ViajesController {
 		viaje_seleccionado.setdestino(viaje.getdestino());		
 		viaje_actualizado = ViajesService.updateViajes(viaje_seleccionado);
 
-		System.out.println("El viaje actualizado es: " + viaje_actualizado);
+		//System.out.println("El viaje actualizado es: " + viaje_actualizado);
 
 		return viaje_actualizado;
 	}

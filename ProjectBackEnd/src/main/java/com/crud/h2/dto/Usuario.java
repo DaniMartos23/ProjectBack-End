@@ -235,12 +235,14 @@ public class Usuario {
 	
 
 	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY)
 	public List<Chollo> getChollo() {
 		return chollo;
 	}
 
 	
 	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY)
 	public List<UserRoles> getUserRoles() {
 		return roles;
 	}
@@ -259,7 +261,6 @@ public class Usuario {
 	public String toString() {
 		return "Usuario [id_usuario=" + id_usuario + ", usuario=" + usuario + ", nombre=" + nombre + ", apellidos="
 				+ apellidos + ", fecha_nacimiento=" + fecha_nacimiento + ", correo=" + correo + ", ciudad=" + ciudad
-				+ ", fotoPerfil=" + fotoPerfil + ", contraseña=" + contraseña + ", roles=" + roles + ", reservas="
-				+ reservas + "]";
+				+ ", fotoPerfil=" + fotoPerfil + ", contraseña=" + contraseña + "]";
 	}
 }
