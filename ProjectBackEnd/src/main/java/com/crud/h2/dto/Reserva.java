@@ -19,7 +19,7 @@ public class Reserva {
 	private int ID_reserva;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ID_usuario", updatable=false, insertable=false, nullable = false)
+	@JoinColumn(name = "ID_usuario")
 	private Usuario usuario;
 	
 	@ManyToOne
