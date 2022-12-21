@@ -40,8 +40,6 @@ public class ReservaController {
 	}
 	
 	
-	
-	
 	@PostMapping("/reservas/post/{usuario}")
 	public Reserva salvarReserva(@PathVariable(name="usuario") String usuarioReq,@RequestBody Reserva reserva) {
 		
@@ -54,7 +52,7 @@ public class ReservaController {
 	
 	
 	@GetMapping("/reservas/{id}")
-	public Reserva ReservaXID(@PathVariable(name="ID_reserva") int id) {
+	public Reserva ReservaXID(@PathVariable(name="id") int id) {
 		
 		Reserva reserva_xid= new Reserva();
 		
@@ -66,7 +64,7 @@ public class ReservaController {
 	}
 	
 	@PutMapping("/reservas/{id}")
-	public Reserva actualizarReserva(@PathVariable(name="ID_reserva")int id,@RequestBody Reserva reserva) {
+	public Reserva actualizarReserva(@PathVariable(name="id")int id,@RequestBody Reserva reserva) {
 		
 		Reserva reserva_seleccionado= new Reserva();
 		Reserva reserva_actualizado= new Reserva();
@@ -85,7 +83,7 @@ public class ReservaController {
 	}
 	
 	@DeleteMapping("/reservas/{id}")
-	public void eleiminarReserva(@PathVariable(name="ID_reserva")int id) {
+	public void eleiminarReserva(@PathVariable(name="id")int id) {
 		reservaServiceImpl.eliminarReserva(id);
 	}
 	
