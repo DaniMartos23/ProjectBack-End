@@ -59,7 +59,7 @@ public class Usuario {
 	//@JoinColumn(name = "ID_usuario")
 	private List<Reserva> reservas;
 	
-	@OneToMany(mappedBy = "ID_usuario", cascade=CascadeType.ALL,  orphanRemoval = true)
+	@OneToMany(mappedBy = "usuarios", cascade=CascadeType.ALL,  orphanRemoval = true)
 	private List<Chollo> chollo;
 	
 	
